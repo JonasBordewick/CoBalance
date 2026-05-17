@@ -1,4 +1,5 @@
-site_name: Balancing Tool Documentation
+site_name: CoBalance Documentation
+site_url: https://cobalance.bordewick.dev
 
 theme:
   name: readthedocs
