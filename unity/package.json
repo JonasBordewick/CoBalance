@@ -1,0 +1,10 @@
+{
+    "name": "dev.bordewick.cobalance",
+    "version": "1.0.0",
+    "displayName": "CoBalance for Unity",
+    "description": "Unity-side companion for the CoBalance balancing tool.",
+    "unity": "6000.0",
+    "author": {
+        "name": "Bordewick Jonas"
+    }
+}

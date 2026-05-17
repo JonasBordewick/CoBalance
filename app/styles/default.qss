@@ -1,0 +1,41 @@
+.navbar{
+    background-color: #f5f5f5;
+}
+
+.parameter-table {
+    background-color: #ffffff;
+    border-radius: 12px;
+}
+
+.main-window {
+    background-color: #f5f5f5;
+}
+
+.icon-button {
+    background-color: transparent;
+    border: none;
+    border-radius: 8px;
+}
+
+.icon-button:hover {
+    background-color: rgba(179, 179, 179, 0.50);
+}
+
+.icon-button:pressed {
+    background-color: rgba(179, 179, 179, 0.75);
+}
+
+.icon-button[active="true"] {
+    background-color: rgba(179, 179, 179, 0.50);
+}
+
+.selectionButton {
+    background-color: transparent;
+    border: none;
+    border-radius: 8px;
+}
+
+QToolButton::menu-indicator {
+    image: none;
+    width: 0px;
+}

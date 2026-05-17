@@ -1,0 +1,29 @@
+site_name: Balancing Tool Documentation
+
+theme:
+  name: readthedocs
+  features:
+    - navigation.instant
+    - navigation.tabs
+
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+
+nav:
+  - Home: index.md
+  - Unity Plugin:
+      - Installation: unity-plugin/installation.md
+      - Überblick: unity-plugin/overview.md
+      - Entitäten: unity-plugin/entities.md
+      - Parameter: unity-plugin/parameters.md
+      - Logging: unity-plugin/logging.md
+  - Beispiele:
+      - Scriptable Objects: examples/scripable_object_example.md
+      - Simple Game Object: examples/simple_game_object_example.md
+      - Advanced Parameter Example: examples/advanced_parameter_example.md
