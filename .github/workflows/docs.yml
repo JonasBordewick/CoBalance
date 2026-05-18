@@ -34,6 +34,7 @@ jobs:
       - name: Install MkDocs
         run: |
           pip install mkdocs-material
+          pip install mkdocs-simple-blog
           # Falls du Plugins nutzt, hier ergänzen:
           # pip install mkdocs-mermaid2-plugin mkdocs-glightbox
 
