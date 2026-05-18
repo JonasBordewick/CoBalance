@@ -34,7 +34,7 @@ jobs:
       - name: Install MkDocs
         run: |
           pip install mkdocs-material
-          pip install mkdocs-windmill
+          pip install mkdocs-cluster
           # Falls du Plugins nutzt, hier ergänzen:
           # pip install mkdocs-mermaid2-plugin mkdocs-glightbox
 

@@ -2,7 +2,7 @@ site_name: CoBalance Documentation
 site_url: https://cobalance.bordewick.dev
 
 theme:
-  name: windmill
+  name: cluster
   features:
     - navigation.instant
     - navigation.tabs
