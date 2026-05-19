@@ -1,6 +1,6 @@
 # Erste Schritte
 
-Dieser Guide führt dich durch die Einrichtung deines Unity-Projekts für CoBalance — von der ersten Entität bis zur lauffähigen Simulation.
+Dieser Guide führt durch den kompletten CoBalance-Workflow — von der ersten Entität bis zur fertigen Simulation und automatischen Optimierung.
 
 > **Voraussetzungen:** Unity-Plugin und Desktop App sind bereits installiert.  
 > Falls nicht, folge zuerst den Schritten unter [Installation](index.md#installation).
@@ -9,11 +9,9 @@ Dieser Guide führt dich durch die Einrichtung deines Unity-Projekts für CoBala
 
 ## Schritt 1: Entität definieren
 
-CoBalance arbeitet mit **Entitäten** — Spielobjekten, die balancerelevante Parameter besitzen. Je nach Objekttyp unterscheidet sich die Definition.
+CoBalance arbeitet mit **Entitäten** — Objekten im Spiel, die balancerelevante Parameter besitzen. Je nach Objekttyp unterscheidet sich die Definition.
 
-### ScriptableObject
-
-Das ScriptableObject implementiert `IBalanceableObject` und stellt über die `Descriptor`-Property seine Metadaten bereit:
+**ScriptableObject** — implementiert `IBalanceableObject`:
 
 ```csharp
 using UnityEngine;
@@ -30,9 +28,7 @@ public class EnemyStats : ScriptableObject, IBalanceableObject
 }
 ```
 
-### GameObject / Prefab
-
-Für GameObjects wird stattdessen die Komponente `EntityDescriptorComponent` dem Root-Objekt hinzugefügt. Sie enthält dieselben Metadaten (ID, Display Name, Category) und erfordert keine Code-Änderungen.
+**GameObject / Prefab** — `EntityDescriptorComponent` am Root-Objekt hinzufügen. Keine Code-Änderungen nötig.
 
 Mehr dazu unter [Entitäten](unity-plugin/entities.md).
 
@@ -40,24 +36,7 @@ Mehr dazu unter [Entitäten](unity-plugin/entities.md).
 
 ## Schritt 2: Balance-Parameter markieren
 
-Felder, die CoBalance erkennen und optimieren soll, werden mit `[BalanceParameter]` annotiert. Unterstützte Typen sind `int` und `float`.
-
-```csharp
-[SerializeField, BalanceParameter]
-private int health;
-
-[SerializeField, BalanceParameter]
-private float speed;
-```
-
-Optional kann ein eigener Anzeigename vergeben werden:
-
-```csharp
-[SerializeField, BalanceParameter(DisplayName = "Move Speed")]
-private float speed;
-```
-
-Vollständiges Beispiel mit Entität und Parametern:
+Felder, die CoBalance optimieren soll, werden mit `[BalanceParameter]` annotiert. Unterstützte Typen sind `int` und `float`.
 
 ```csharp
 using UnityEngine;
@@ -87,30 +66,19 @@ Mehr dazu unter [Parameter](unity-plugin/parameters.md).
 
 ---
 
-## Schritt 3: Laufzeitdaten loggen (optional)
+## Schritt 3: Projekt in der Desktop App öffnen
 
-Mit `[BalanceLog]` können Felder für das Laufzeit-Logging markiert werden. Diese Werte werden während der Simulation automatisch aufgezeichnet und sind später in der Desktop App auswertbar.
+Starte das Unity-Projekt einmal im Editor. CoBalance legt dabei automatisch einen `CoBalance/`-Ordner im Projektverzeichnis an, der u.a. die Projektdatei `project.cb` enthält.
 
-```csharp
-using UnityEngine;
-using CoBalance;
+Öffne die Desktop App und gehe auf **Project → Open** (`Ctrl+O`). Wähle die `project.cb`-Datei aus dem `CoBalance/`-Ordner deines Unity-Projekts.
 
-public class Enemy : MonoBehaviour
-{
-    [SerializeField, BalanceLog("current_health")]
-    private int currentHealth;
-}
-```
-
-Objekte, die bereits beim Szenenstart existieren, werden automatisch erkannt. Für dynamisch erzeugte Objekte (z. B. per `Instantiate`) muss zusätzlich die Komponente `BalanceLogSource` am Root-GameObject hinzugefügt werden.
-
-Mehr dazu unter [Logging](unity-plugin/logging.md).
+Nach dem Öffnen sollten in der **Parameter**-Ansicht alle mit `[BalanceParameter]` markierten Felder sichtbar sein — aufgeteilt nach Entität und Kategorie. Das ist eine gute Möglichkeit zu prüfen, ob die Annotationen korrekt erkannt wurden, bevor es weitergeht.
 
 ---
 
-## Schritt 4: Simulation beenden
+## Schritt 4: Simulation vorbereiten
 
-CoBalance führt das Spiel im Headless Batch Mode aus. Damit es weiß, wann ein Simulationslauf abgeschlossen ist, muss `SimulationAPI.FinishScenario()` am natürlichen Endpunkt aufgerufen werden:
+CoBalance führt das Spiel im Headless Batch Mode aus. Der Spielcode muss das Ende jedes Simulationslaufs mit `SimulationAPI.FinishScenario()` signalisieren:
 
 ```csharp
 using CoBalance.Simulations;
@@ -122,16 +90,56 @@ public class GameManager : MonoBehaviour
     {
         SimulationAPI.FinishScenario("gameOver");
     }
+
+    private void OnPlayerWon()
+    {
+        SimulationAPI.FinishScenario("playerWon");
+    }
 }
 ```
+
+Außerdem muss in den **Einstellungen der Desktop App** (`Project → Settings`) der Pfad zur Unity-Executable eingetragen sein.
 
 Mehr dazu unter [Simulation](unity-plugin/simulation.md).
 
 ---
 
-## Schritt 5: Fitnesswert liefern (nur für Auto Suggestion)
+## Schritt 5: Simulation starten
 
-Wird die Auto-Suggestion-Funktion der Desktop App genutzt, benötigt CoBalance zusätzlich einen Fitnesswert pro Simulationslauf. Dazu implementiert eine Szenenkomponente `IGeneticAlgorithmFitnessEvaluator`:
+Öffne in der Desktop App das Simulationsfenster über die **rechte Navigationsleiste**. Konfiguriere:
+
+- **Simulation Identifier** — eindeutiger Name für diesen Lauf (bestimmt den Log-Dateinamen)
+- **Balancing Snapshot** — welche Balance-Konfiguration verwendet werden soll
+- **Unity Scene** — die Szene, in der die Simulation läuft
+- **Number of Runs** — wie oft der Lauf wiederholt wird
+
+Ein Klick auf **Start Simulations** startet Unity im Hintergrund. Der Status wird in der Statusleiste angezeigt.
+
+Mehr dazu unter [Simulation (Desktop App)](desktop-app/simulation.md).
+
+---
+
+## Schritt 6: Logs auswerten (optional)
+
+Felder, die während der Simulation beobachtet werden sollen, können mit `[BalanceLog]` markiert werden:
+
+```csharp
+public class Enemy : MonoBehaviour
+{
+    [SerializeField, BalanceLog("current_health")]
+    private int currentHealth;
+}
+```
+
+Nach abgeschlossener Simulation erscheinen die erzeugten Log-Dateien automatisch in der **Logs**-Ansicht der Desktop App. Dort können Werte als Linien- oder Boxplot-Diagramm dargestellt und mehrere Läufe miteinander verglichen werden.
+
+Mehr dazu unter [Logging](unity-plugin/logging.md) und [Logs (Desktop App)](desktop-app/logs-view.md).
+
+---
+
+## Schritt 7: Auto Suggestion einrichten (optional)
+
+Der genetische Algorithmus optimiert Parameter automatisch — er braucht dafür einen Fitnesswert pro Simulationslauf. Eine Szenenkomponente implementiert dafür `IGeneticAlgorithmFitnessEvaluator`:
 
 ```csharp
 using CoBalance;
@@ -148,14 +156,14 @@ public class FitnessEvaluator : MonoBehaviour, IGeneticAlgorithmFitnessEvaluator
 }
 ```
 
-Ein höherer Rückgabewert bedeutet eine bessere Balance. Wird die Komponente nicht gefunden, überspringt CoBalance diesen Schritt stillschweigend.
+Anschließend in der Desktop App:
 
-Mehr dazu unter [Auto Suggestion](unity-plugin/auto-suggestion.md).
+1. In der **Parameter**-Ansicht die zu optimierenden Parameter auswählen
+2. Das **Auto-Suggestion**-Fenster über die rechte Navigationsleiste öffnen
+3. Snapshot-Identifier, Basis-Balance, Szene und Algorithmus-Einstellungen konfigurieren
+4. Für jeden Parameter **Min/Max**-Grenzen festlegen
+5. **Start Auto-Suggestion** klicken
 
----
+Die besten Konfigurationen werden am Ende automatisch als neue Balance-Snapshots gespeichert.
 
-## Nächste Schritte
-
-Das Unity-Projekt ist jetzt eingerichtet. Im nächsten Abschnitt wird erklärt, wie das Projekt in der Desktop App geöffnet, Simulationen gestartet und die Auto-Suggestion-Funktion genutzt wird.
-
-> Dieser Teil der Dokumentation wird in Kürze ergänzt.
+Mehr dazu unter [Auto Suggestion (Unity)](unity-plugin/auto-suggestion.md) und [Auto Suggestion (Desktop App)](desktop-app/auto-suggestion.md).
