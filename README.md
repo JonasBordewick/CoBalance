@@ -1,9 +1,11 @@
-# Cobalance — Game Balancing Framework
+# CoBalance — Game Balancing Framework
 
 A two-part toolchain for data-driven game balancing in Unity, built as part of a master's thesis.
 
 - **Unity Package** (`unity/`) — runtime & editor extension that exposes balance parameters, runs headless simulations, and reports fitness scores.
 - **Desktop App** (`app/`) — PyQt6 GUI that loads balance files, triggers Unity batch simulations, and runs a genetic algorithm to find optimised parameter configurations automatically.
+
+📖 **Full documentation:** [cobalance.bordewick.dev](https://cobalance.bordewick.dev)
 
 ---
 
@@ -25,34 +27,48 @@ cobalance/
 
 ---
 
-## Quick start
+## Installation
 
-### Unity Package
+### Unity Plugin
 
-Add the package to your Unity project (Unity 6+) via the Package Manager using a local path or Git URL:
+The plugin is installed via the **Unity Package Manager** using a Git URL. No manual file copying required.
+
+1. Open **Window → Package Manager** in Unity
+2. Click **+** → **Add package from git URL...**
+3. Enter the following URL and confirm:
 
 ```
-Packages/manifest.json  →  "dev.bordewick.balancingframework": "file:../../cobalance/unity"
+https://github.com/JonasBordewick/CoBalance.git?path=unity
 ```
 
-Mark your MonoBehaviour fields or ScriptableObject properties with the provided attributes to expose them as balance parameters. See [docs/unity-plugin/](docs/unity-plugin/) for a full walkthrough.
+After a successful installation a **CoBalance** menu entry will appear in the Unity menu bar.
+
+> **Requires Unity 6000.0 or newer.**
 
 ### Desktop App
 
-Requires **Python 3.11+** and a compiled headless Unity build of your project.
+#### Option A — Pre-built Binaries
+
+Download the latest release for your operating system from the [Releases page](https://github.com/JonasBordewick/CoBalance/releases). The download is a single executable — no installation required, just run it.
+
+| Platform | File                    |
+|----------|-------------------------|
+| Windows  | `CoBalance-windows.exe` |
+| macOS    | `CoBalance-macos`       |
+| Linux    | `CoBalance-linux`       |
+
+#### Option B — Build from Source
+
+Requires **Python 3.11+**.
 
 ```bash
-cd app
+git clone https://github.com/JonasBordewick/CoBalance.git
+cd CoBalance/app
 python -m venv .venv
-source .venv/bin/activate        # Windows: .venv\Scripts\activate
+source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 python main.py
 ```
-
-1. **File → Open Project** — select a `.bfproject` file.
-2. Browse and edit parameters in the **Parameter Overview** tab.
-3. Open the **Simulation** panel to run a batch and inspect logs.
-4. Open the **Auto Suggestion** panel to start the genetic algorithm — results are saved as new balance files in the project's `Balances/` directory.
 
 ---
 
@@ -60,20 +76,22 @@ python main.py
 
 ```
 Unity (headless batch mode)
-  └─ runs simulation, writes fitness score to stdout
+  └─ runs simulation, returns fitness score
         ↑ spawns process          ↓ reads score
 Desktop App
   └─ GA worker breeds parameter candidates across generations
-  └─ best configurations saved as .balance files
+  └─ best configurations saved as .json balance files
 ```
 
-The genetic algorithm evaluates each candidate by launching Unity in batch mode, collecting the fitness score returned by `GeneticAlgorithmFitnessResultFinalizer`, and breeding the next generation via tournament selection, blend crossover, and elitism.
+The genetic algorithm evaluates each candidate by launching Unity in batch mode, collecting the fitness score returned by `IGeneticAlgorithmFitnessEvaluator`, and breeding the next generation via tournament selection, blend crossover, and elitism.
 
 ---
 
 ## Documentation
 
-Full documentation is built with [MkDocs](https://www.mkdocs.org/):
+Full documentation is available at [cobalance.bordewick.dev](https://cobalance.bordewick.dev).
+
+To build and preview locally:
 
 ```bash
 pip install mkdocs mkdocs-material
@@ -85,8 +103,8 @@ mkdocs build        # output → site/
 
 ## Requirements
 
-| Component     | Requirement                        |
-|---------------|------------------------------------|
-| Unity Package | Unity 6000.0+                      |
-| Desktop App   | Python 3.11+, PyQt6                |
-| Documentation | MkDocs + readthedocs theme         |
+| Component     | Requirement           |
+|---------------|-----------------------|
+| Unity Plugin  | Unity 6000.0+         |
+| Desktop App   | Python 3.11+, PyQt6   |
+| Documentation | MkDocs + mkdocs-material |
