@@ -43,7 +43,6 @@ nav:
   - Home: index.md
   - Erste Schritte: getting-started.md
   - Unity Plugin:
-      - Installation: unity-plugin/installation.md
       - Überblick: unity-plugin/overview.md
       - Entitäten: unity-plugin/entities.md
       - Parameter: unity-plugin/parameters.md
