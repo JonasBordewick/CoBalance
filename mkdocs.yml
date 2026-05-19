@@ -18,6 +18,7 @@ markdown_extensions:
 
 nav:
   - Home: index.md
+  - Erste Schritte: getting-started.md
   - Unity Plugin:
       - Installation: unity-plugin/installation.md
       - Überblick: unity-plugin/overview.md
@@ -26,6 +27,15 @@ nav:
       - Logging: unity-plugin/logging.md
       - Simulation: unity-plugin/simulation.md
       - Auto-Suggestion: unity-plugin/auto-suggestion.md
+  - Desktop App:
+      - Überblick: desktop-app/overview.md
+      - Projekt: desktop-app/project.md
+      - Parameter: desktop-app/parameter-view.md
+      - Logs: desktop-app/logs-view.md
+      - Vergleich: desktop-app/comparison-view.md
+      - Simulation: desktop-app/simulation.md
+      - Auto Suggestion: desktop-app/auto-suggestion.md
+      - Einstellungen: desktop-app/settings.md
   - Beispiele:
       - Scriptable Objects: examples/scripable_object_example.md
       - Simple Game Object: examples/simple_game_object_example.md
