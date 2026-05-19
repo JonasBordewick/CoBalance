@@ -1,6 +1,6 @@
 # Advanced Parameter Example
 
-!!! Anmerkung
+!!! note
     Erweiterte Parameter sind ein optionales Feature des Balancing Frameworks.
     Für die meisten Anwendungsfälle reichen einfache Parameter vom Typ `int` oder `float`.
 

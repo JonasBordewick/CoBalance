@@ -25,7 +25,7 @@ SimulationAPI.FinishScenario("timeout");
 SimulationAPI.FinishScenario("playerWon");
 ```
 
-!!! achtung
+!!! warning
     `FinishScenario` darf pro Simulationslauf **genau einmal** aufgerufen werden.
     Mehrfache Aufrufe werden intern ignoriert.
 

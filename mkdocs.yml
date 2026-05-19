@@ -20,6 +20,14 @@ theme:
     - search.highlight
     - content.code.copy
 
+copyright: Copyright &copy; 2026 Jonas Bordewick
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/JonasBordewick/CoBalance
+      name: CoBalance on GitHub
+
 plugins:
   - search
 

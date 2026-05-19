@@ -22,6 +22,6 @@ Dabei spielt es keine Rolle, ob es sich um ein GameObject handelt, das direkt in
 
 Sobald ein Objekt das `EntityDescriptorComponent` besitzt, kann das Balancing Framework alle mit `BalanceParameter` markierten Felder erkennen.
 
-!!! tipp
+!!! tip
     In vielen Projekten werden Entitäten als Prefabs umgesetzt.  
     Dadurch können mehrere Instanzen derselben Entität im Spiel verwendet werden.

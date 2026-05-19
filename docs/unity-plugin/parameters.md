@@ -35,7 +35,7 @@ Aktuell unterstützt das Framework folgende Datentypen:
 
 Andere Datentypen werden nicht automatisch erkannt.
 
-!!! anmerkung
+!!! note
     Wenn ein nicht unterstützter Typ verwendet wird, gibt das Framework eine Warnung im Unity-Console-Log aus.
 
 ## Verwendung in Entitäten

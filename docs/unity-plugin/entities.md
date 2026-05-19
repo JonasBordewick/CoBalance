@@ -99,7 +99,7 @@ Die `Descriptor`-Property definiert die Metadaten der Entität
 
 Die Felder `health`, `speed` und `range` sind als `BalanceParameter` markiert
 
-!!! tipp
+!!! tip
     ScriptableObjects eignen sich besonders gut für Balancing-Daten,
     da sie unabhängig von Szenen gespeichert werden können und häufig
     für Konfigurationsdaten verwendet werden.
