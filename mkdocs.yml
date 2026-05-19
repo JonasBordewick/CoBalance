@@ -24,6 +24,8 @@ nav:
       - Entitäten: unity-plugin/entities.md
       - Parameter: unity-plugin/parameters.md
       - Logging: unity-plugin/logging.md
+      - Simulation: unity-plugin/simulation.md
+      - Auto-Suggestion: unity-plugin/auto-suggestion.md
   - Beispiele:
       - Scriptable Objects: examples/scripable_object_example.md
       - Simple Game Object: examples/simple_game_object_example.md
