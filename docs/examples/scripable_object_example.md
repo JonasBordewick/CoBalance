@@ -2,20 +2,16 @@
 
 ```csharp
 [CreateAssetMenu(fileName = "Enemy Stats", menuName = "Blueprints/Enemy Stats")]
-public class Enemy Stats : ScriptableObject, IBalanceableObject
+public class EnemyStats : ScriptableObject, IBalanceableObject
 {
-    [Header("Entity Descriptor Data")]
-    [SerializeField] private string entityID;
-    [SerializeField] private string displayName;
-    [SerializeField] private string category;
-
+    private string enemyName;
     [Header("Enemy Stats")]
     [SerializeField, BalanceParameter] private int health;
     [SerializeField, BalanceParameter] private float speed;
     [SerializeField, BalanceParameter] private float damage;
 
     public EntityDescriptor Descriptor => new EntityDescriptor(
-        entityID, displayName, category
+        $"enemy_{enemyName.ToLower()}", enemyName, "Enemy"
     );
 }
 ```

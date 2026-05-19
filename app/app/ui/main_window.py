@@ -365,7 +365,7 @@ class MainWindow(QMainWindow):
         print("About action triggered")
 
     def _on_action_documentation_triggered(self):
-        QDesktopServices.openUrl(QUrl("http://127.0.0.1:8000/"))
+        QDesktopServices.openUrl(QUrl("https://cobalance.bordewick.dev"))
 
     def _on_action_group_selection_triggered(self):
         create_group_from_selection_via_dialog(self, self.logs_explorer_view_model)
