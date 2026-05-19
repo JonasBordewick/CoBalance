@@ -6,6 +6,7 @@ __pycache__/
 *.so
 *.egg
 *.egg-info/
+*.spec
 dist/
 build/
 .eggs/
@@ -26,7 +27,7 @@ ENV/
 [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
-[Ll]ogs/
+unity/[Ll]ogs/
 [Mm]emory[Cc]aptures/
 
 # Build outputs

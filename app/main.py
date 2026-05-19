@@ -88,7 +88,7 @@ def main():
     palette.setColor(QPalette.ColorRole.HighlightedText, QColor(255, 255, 255))
 
     app.setPalette(palette)
-    with open("./styles/default.qss", "r") as f:
+    with open(resource_path("./styles/default.qss"), "r") as f:
         app.setStyleSheet(f.read())
 
     from app.io.watchers import DirectoryWatcherService
@@ -132,6 +132,19 @@ def main():
 
     window.show()
     sys.exit(app.exec())
+
+import sys
+import os
+
+def resource_path(relative_path):
+    """Liefert den absoluten Pfad — funktioniert im Dev-Modus UND nach PyInstaller-Build."""
+    if hasattr(sys, '_MEIPASS'):
+        # Läuft als gepackte Exe → temp-Ordner von PyInstaller
+        base_path = sys._MEIPASS
+    else:
+        # Läuft normal aus dem Source-Code
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
 
 if __name__ == "__main__":
     main()
