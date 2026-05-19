@@ -3,11 +3,11 @@ using System.IO;
 using UnityEditor;
 using UnityEditor.Compilation;
 using UnityEngine;
-using BalancingFramework;
-using BalancingFramework.DTO;
-using BalancingFramework.Logger;
+using CoBalance;
+using CoBalance.DTO;
+using CoBalance.Logger;
 
-namespace BalancingFramework.Editor
+namespace CoBalance.Editor
 {
     [InitializeOnLoad]
     public static class AutoExporter
@@ -35,7 +35,7 @@ namespace BalancingFramework.Editor
                 if (!_pending) return;
                 if (EditorApplication.timeSinceStartup < _nextExportTime) return;
                 _pending = false;
-                BalancingFrameworkLogger.LogInfo("Hierarchy changed. Scheduled balance export performing now...");
+                CoBalanceLogger.LogInfo("Hierarchy changed. Scheduled balance export performing now...");
                 Reload();
             };
         }
@@ -44,7 +44,7 @@ namespace BalancingFramework.Editor
         {
             if (Utilities.GetBalanceFilePath(BalanceFilePath) == null)
             {
-                BalancingFrameworkLogger.LogError($"Failed to determine balance file path.");
+                CoBalanceLogger.LogError($"Failed to determine balance file path.");
                 return;
             }
             
@@ -58,7 +58,7 @@ namespace BalancingFramework.Editor
             }
             catch (System.Exception ex)
             {
-                BalancingFrameworkLogger.LogError($"Failed to export balancing configuration: {ex.Message}");
+                CoBalanceLogger.LogError($"Failed to export balancing configuration: {ex.Message}");
             }
         }
 
@@ -69,7 +69,7 @@ namespace BalancingFramework.Editor
                 return;
             _pending = true;
             _nextExportTime = EditorApplication.timeSinceStartup + 5.0; // Delay export by 5 seconds to batch changes
-            BalancingFrameworkLogger.LogInfo("Hierarchy changed. Scheduling balance export...");
+            CoBalanceLogger.LogInfo("Hierarchy changed. Scheduling balance export...");
         }
     }
 }

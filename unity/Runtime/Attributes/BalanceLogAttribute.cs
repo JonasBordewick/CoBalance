@@ -1,6 +1,6 @@
 using System;
 
-namespace BalancingFramework
+namespace CoBalance
 {
     [AttributeUsage(AttributeTargets.Field, Inherited = true, AllowMultiple = false)]
     public class BalanceLogAttribute : Attribute

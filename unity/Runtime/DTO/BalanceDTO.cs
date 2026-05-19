@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace BalancingFramework.DTO
+namespace CoBalance.DTO
 {
     [Serializable]
     public class BalanceDTO : IExportableDTO

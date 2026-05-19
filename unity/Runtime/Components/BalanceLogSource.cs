@@ -1,8 +1,8 @@
 using System;
-using BalancingFramework.Logger;
+using CoBalance.Logger;
 using UnityEngine;
 
-namespace BalancingFramework
+namespace CoBalance
 {
     public sealed class BalanceLogSource : MonoBehaviour
     {
@@ -13,7 +13,7 @@ namespace BalancingFramework
             _logger = FindFirstObjectByType<GameStatLogger>();
             if (_logger == null)
             {
-                BalancingFrameworkLogger.LogError("No GameStatLogger found in the scene. BalanceLogSource will not function.");
+                CoBalanceLogger.LogError("No GameStatLogger found in the scene. BalanceLogSource will not function.");
                 return;
             }
             _logger.RegisterLogSource(this);

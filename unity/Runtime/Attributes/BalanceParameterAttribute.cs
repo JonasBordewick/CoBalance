@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using BalancingFramework.Logger;
+using CoBalance.Logger;
 using UnityEngine;
 
-namespace BalancingFramework
+namespace CoBalance
 {
     [AttributeUsage(AttributeTargets.Field)]
     public class BalanceParameterAttribute : Attribute
@@ -84,13 +84,13 @@ namespace BalancingFramework
                         _setter(Convert.ToInt32(value));
                         return true;
                     default:
-                        BalancingFrameworkLogger.LogError($"Unsupported parameter value type: {ValueType}");
+                        CoBalanceLogger.LogError($"Unsupported parameter value type: {ValueType}");
                         return false;
                 }
             }
             catch (Exception exception)
             {
-                BalancingFrameworkLogger.LogError($"Failed to set value for parameter '{Key}': {exception.Message}");
+                CoBalanceLogger.LogError($"Failed to set value for parameter '{Key}': {exception.Message}");
                 return false;
             }
         }

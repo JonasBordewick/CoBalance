@@ -22,7 +22,7 @@ class SettingsViewModel(QObject):
     """Manages app-wide and project-level settings, and persists them to disk.
 
     App settings (theme, defaults) are stored in a platform-specific user directory.
-    Project settings are stored alongside the .bfproject file.
+    Project settings are stored alongside the .cb file.
     """
 
     settings_changed = pyqtSignal()

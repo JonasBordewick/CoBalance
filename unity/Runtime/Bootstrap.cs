@@ -1,10 +1,10 @@
 using System.IO;
-using BalancingFramework.DTO;
-using BalancingFramework.Logger;
-using BalancingFramework.Simulations;
+using CoBalance.DTO;
+using CoBalance.Logger;
+using CoBalance.Simulations;
 using UnityEngine;
 
-namespace BalancingFramework
+namespace CoBalance
 {
     public static class Bootstrap
     {
@@ -23,7 +23,7 @@ namespace BalancingFramework
                 return;
             }
             
-            var go = new GameObject("[BalancingFramework] Simulation");
+            var go = new GameObject("[CoBalance] Simulation");
             go.AddComponent<SimulationBootstrap>();
         }
 
@@ -43,8 +43,8 @@ namespace BalancingFramework
         private static void InitializeGameStatLogger()
         {
             if (JobContext.IgnoreLog) return;
-            BalancingFrameworkLogger.LogInfo("Initializing Balancing Framework...");
-            var go = new GameObject("[BalancingFramework] Logger");
+            CoBalanceLogger.LogInfo("Initializing Balancing Framework...");
+            var go = new GameObject("[CoBalance] Logger");
             go.AddComponent<GameStatLogger>();
         }
 

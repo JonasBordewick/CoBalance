@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using BalancingFramework.Logger;
+using CoBalance.Logger;
 using UnityEngine;
 
-namespace BalancingFramework
+namespace CoBalance
 {
     public class BalancingAttributeRegistry
     {
@@ -47,13 +47,13 @@ namespace BalancingFramework
                 
                 if (string.IsNullOrWhiteSpace(entityDescriptor.ID))
                 {
-                    BalancingFrameworkLogger.LogWarning($"GameObject '{gameObject.name}' has an entity descriptor with null ID. Skipping.");
+                    CoBalanceLogger.LogWarning($"GameObject '{gameObject.name}' has an entity descriptor with null ID. Skipping.");
                     continue;
                 }
 
                 if (!_allEntities.TryAdd(entityDescriptor.ID, entityDescriptor))
                 {
-                    // BalancingFrameworkLogger.LogInfo("Entity with ID '" + entityDescriptor.ID + "' is already registered. Skipping prefab: " + gameObject.name);
+                    // CoBalanceLogger.LogInfo("Entity with ID '" + entityDescriptor.ID + "' is already registered. Skipping prefab: " + gameObject.name);
                     // continue;
                 }
 
@@ -77,7 +77,7 @@ namespace BalancingFramework
 
                 if (string.IsNullOrWhiteSpace(entityDescriptor.ID))
                 {
-                    BalancingFrameworkLogger.LogWarning($"Prefab '{prefab.name}' has an entity descriptor with null ID. Skipping.");
+                    CoBalanceLogger.LogWarning($"Prefab '{prefab.name}' has an entity descriptor with null ID. Skipping.");
                     continue;
                 }
 
@@ -98,7 +98,7 @@ namespace BalancingFramework
                 var entityDescriptor = (scriptableObject as IBalanceableObject).Descriptor;
                 if (string.IsNullOrWhiteSpace(entityDescriptor.ID))
                 {
-                    BalancingFrameworkLogger.LogWarning($"Scriptable Object '{scriptableObject.name}' has an entity descriptor with null ID. Skipping.");
+                    CoBalanceLogger.LogWarning($"Scriptable Object '{scriptableObject.name}' has an entity descriptor with null ID. Skipping.");
                     continue;
                 }
                 if (!_allEntities.TryAdd(entityDescriptor.ID, entityDescriptor))
@@ -247,7 +247,7 @@ namespace BalancingFramework
                     }
                     continue; 
                 }
-                BalancingFrameworkLogger.LogWarning($"Unsupported parameter type '{field.FieldType}' in field '{field.Name}' of component '{type.Name}'. Supported types are float and int.");
+                CoBalanceLogger.LogWarning($"Unsupported parameter type '{field.FieldType}' in field '{field.Name}' of component '{type.Name}'. Supported types are float and int.");
             }
             
         }

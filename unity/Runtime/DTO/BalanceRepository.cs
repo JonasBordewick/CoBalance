@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using BalancingFramework.Logger;
+using CoBalance.Logger;
 using UnityEngine.Windows;
 
-namespace BalancingFramework.DTO
+namespace CoBalance.DTO
 {
     public static class BalanceRepository
     {
@@ -89,14 +89,14 @@ namespace BalancingFramework.DTO
             
             if (!File.Exists(filePath))
             {
-                BalancingFrameworkLogger.LogWarning($"File not found at path: {filePath}. Import aborted.");
+                CoBalanceLogger.LogWarning($"File not found at path: {filePath}. Import aborted.");
                 return;
             }
             
             var dto = JsonSerializer.ReadJson<BalanceDTO>(filePath);
             if (dto == null || dto.values == null || dto.entities == null)
             {
-                BalancingFrameworkLogger.LogWarning(
+                CoBalanceLogger.LogWarning(
                     $"Invalid or empty data in file at path: {filePath}. Import aborted.");
                 return;
             }
@@ -129,14 +129,14 @@ namespace BalancingFramework.DTO
 
                     if (ok)
                     {
-                        BalancingFrameworkLogger.LogInfo("" +
+                        CoBalanceLogger.LogInfo("" +
                                                          $"Applied value for parameter with key: {valueDto.id}. " +
                                                          $"New value: {valueDto.value}");
                         appliedCount++;
                     }
                     else
                     {
-                        BalancingFrameworkLogger.LogInfo("" +
+                        CoBalanceLogger.LogInfo("" +
                                                          $"Type mismatch when applying value for parameter with key: {valueDto.id}. " +
                                                          $"Expected type: {descriptor.ValueType}, " +
                                                          $"Provided value: {valueDto.value}");
@@ -144,7 +144,7 @@ namespace BalancingFramework.DTO
                     }
                 }
             }
-            BalancingFrameworkLogger.LogInfo($"Balance import completed. Applied values: {appliedCount}, " +
+            CoBalanceLogger.LogInfo($"Balance import completed. Applied values: {appliedCount}, " +
                 $"Skipped due to missing parameters: {skippedMissing}, " +
                 $"Skipped due to type mismatch: {skippedTypeMismatch}");
         }

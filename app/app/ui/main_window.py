@@ -36,7 +36,7 @@ class MainWindow(QMainWindow):
                  project_context_view_model: ProjectContextViewModel,
                  ):
         super().__init__()
-        self.setWindowTitle("Balance Tool")
+        self.setWindowTitle("CoBalance")
         self.resize(1200, 800)
 
         self.app_view_model = app_view_model
@@ -307,7 +307,7 @@ class MainWindow(QMainWindow):
                 dialog.selectFile(info.fileName())
 
         dialog.setFileMode(QFileDialog.FileMode.ExistingFiles)
-        dialog.setNameFilter("Project Files (*.bfproject)")
+        dialog.setNameFilter("Project Files (*.cb)")
         dialog.setViewMode(QFileDialog.ViewMode.List)
         if dialog.exec():
             file_path = dialog.selectedFiles()[0]

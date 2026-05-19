@@ -1,7 +1,7 @@
 using System.Linq;
 using UnityEngine;
 
-namespace BalancingFramework.Simulations
+namespace CoBalance.Simulations
 {
     public static class SimulationRunTerminator
     {

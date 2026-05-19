@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-namespace BalancingFramework
+namespace CoBalance
 {
     public static class Utilities
     {
@@ -26,7 +26,7 @@ namespace BalancingFramework
         public static string GetFrameworkFolderPath()
         {
             var projectRoot = Directory.GetParent(Application.dataPath)?.FullName ?? Application.dataPath;
-            return System.IO.Path.Combine(projectRoot, "Balancing");
+            return System.IO.Path.Combine(projectRoot, "CoBalance");
         }
 
         public static string GetLogFilePath(string logfileName)

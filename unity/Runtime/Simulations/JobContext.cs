@@ -2,19 +2,19 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using BalancingFramework.DTO;
+using CoBalance.DTO;
 using UnityEditor;
 using UnityEngine;
 
-namespace BalancingFramework.Simulations
+namespace CoBalance.Simulations
 {
     public static class JobContext
     {
-        private const string KeyIsJobMode = "BalancingFramework.JobContext.IsJobMode";
-        private const string KeyConfigPath = "BalancingFramework.JobContext.ConfigPath";
-        private const string KeyCounter = "BalancingFramework.JobContext.Counter";
-        private const string KeyIgnoreLog = "BalancingFramework.JobContext.IgnoreLog";
-        private const string KeyCurrentBalancePath = "BalancingFramework.JobContext.CurrentBalancePath";
+        private const string KeyIsJobMode = "CoBalance.JobContext.IsJobMode";
+        private const string KeyConfigPath = "CoBalance.JobContext.ConfigPath";
+        private const string KeyCounter = "CoBalance.JobContext.Counter";
+        private const string KeyIgnoreLog = "CoBalance.JobContext.IgnoreLog";
+        private const string KeyCurrentBalancePath = "CoBalance.JobContext.CurrentBalancePath";
 
         private static JobSettingsDTO _cachedJobSettings;
         private static List<JobRunDefinition> _cachedRunPlan;

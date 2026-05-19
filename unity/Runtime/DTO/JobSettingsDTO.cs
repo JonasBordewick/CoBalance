@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace BalancingFramework.DTO
+namespace CoBalance.DTO
 {
     public static class JobTypes
     {

@@ -1,10 +1,10 @@
 #if UNITY_EDITOR
 using System;
 using System.IO;
-using BalancingFramework.Simulations;
+using CoBalance.Simulations;
 using UnityEngine;
 
-namespace BalancingFramework
+namespace CoBalance
 {
     public static class GeneticAlgorithmFitnessRecorder
     {

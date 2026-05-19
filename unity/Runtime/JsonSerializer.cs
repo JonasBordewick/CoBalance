@@ -1,9 +1,9 @@
 using System.IO;
-using BalancingFramework.DTO;
-using BalancingFramework.Logger;
+using CoBalance.DTO;
+using CoBalance.Logger;
 using UnityEngine;
 
-namespace BalancingFramework
+namespace CoBalance
 {
     public static class JsonSerializer
     {
@@ -11,7 +11,7 @@ namespace BalancingFramework
         {
             if (!fileDto.IsValidForExport())
             {
-                BalancingFrameworkLogger.LogWarning("Export produced 0 parameters. Skipping write to avoid overwriting a valid file.");
+                CoBalanceLogger.LogWarning("Export produced 0 parameters. Skipping write to avoid overwriting a valid file.");
                 return;
             }
             var dir = Path.GetDirectoryName(path);

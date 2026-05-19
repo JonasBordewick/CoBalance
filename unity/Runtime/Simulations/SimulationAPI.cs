@@ -1,4 +1,4 @@
-namespace BalancingFramework.Simulations
+namespace CoBalance.Simulations
 {
     public static class SimulationAPI
     {

@@ -1,4 +1,4 @@
-namespace BalancingFramework.DTO
+namespace CoBalance.DTO
 {
     public interface IExportableDTO
     {

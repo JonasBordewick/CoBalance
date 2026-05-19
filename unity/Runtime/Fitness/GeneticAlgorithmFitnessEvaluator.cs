@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BalancingFramework
+namespace CoBalance
 {
     /// <summary>
     /// Interface <c>IGeneticAlgorithmFitnessEvaluator</c> defines all methods

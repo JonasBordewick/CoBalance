@@ -1,11 +1,11 @@
 using System;
 using System.IO;
-using BalancingFramework.Simulations;
+using CoBalance.Simulations;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
-namespace BalancingFramework.Editor
+namespace CoBalance.Editor
 {
     [Serializable]
     public struct IterationProgress

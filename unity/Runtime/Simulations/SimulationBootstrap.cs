@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BalancingFramework.Simulations
+namespace CoBalance.Simulations
 {
     public sealed class SimulationBootstrap : MonoBehaviour
     {

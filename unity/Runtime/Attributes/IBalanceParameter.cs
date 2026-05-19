@@ -1,4 +1,4 @@
-namespace BalancingFramework
+namespace CoBalance
 {
     public enum BalanceValueType
     {

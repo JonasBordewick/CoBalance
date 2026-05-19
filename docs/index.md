@@ -1,77 +1,77 @@
-# CoBalance — Game Balancing Framework
+# CoBalance — Game-Balancing-Framework
 
-CoBalance is a two-part toolchain for data-driven game balancing in Unity, developed as part of a master's thesis. It combines a Unity plugin with a desktop application to help game developers find optimal balance configurations through automated simulation and genetic algorithms.
+CoBalance ist ein zweiteiliges Toolchain für datengetriebenes Game-Balancing in Unity, das im Rahmen einer Masterarbeit entwickelt wurde. Es kombiniert ein Unity-Plugin mit einer Desktop-Anwendung, um Spieleentwicklern dabei zu helfen, optimale Balance-Konfigurationen durch automatisierte Simulationen und genetische Algorithmen zu finden.
 
-## How it works
+## Funktionsweise
 
 ```text
 Unity (Headless Batch Mode)
-  └─ runs simulation, returns fitness score
-        ↑ spawns process          ↓ reads score
+  └─ führt Simulation aus, gibt Fitnesswert zurück
+        ↑ startet Prozess          ↓ liest Wert
 Desktop App
-  └─ genetic algorithm breeds parameter candidates across generations
-  └─ best configurations saved as .balance files
+  └─ genetischer Algorithmus züchtet Parameterkandidaten über Generationen
+  └─ beste Konfigurationen werden als .json-Dateien gespeichert
 ```
 
-You annotate your Unity MonoBehaviours or ScriptableObjects with CoBalance attributes to expose their fields as balance parameters. The desktop app then reads these parameters, runs headless Unity simulations to evaluate them, and uses a genetic algorithm to automatically find optimised configurations.
+Du annotierst deine Unity-MonoBehaviours oder ScriptableObjects mit CoBalance-Attributen, um ihre Felder als Balance-Parameter freizugeben. Die Desktop-App liest diese Parameter, führt Headless-Unity-Simulationen zur Auswertung durch und nutzt einen genetischen Algorithmus, um automatisch optimierte Konfigurationen zu finden.
 
 ---
 
-## Components
+## Komponenten
 
-### Unity Plugin
+### Unity-Plugin
 
-The Unity package provides the runtime and editor tooling inside your game project:
+Das Unity-Paket stellt die Laufzeit- und Editor-Werkzeuge innerhalb deines Spielprojekts bereit:
 
-- Expose fields as balance parameters using attributes
-- Define entities and their parameter groups
-- Built-in logging system for simulation runs
-- Headless simulation bootstrap for batch mode execution
-- Editor windows for inspecting and managing balance files
+- Felder als Balance-Parameter per Attribut freigeben
+- Entitäten und ihre Parametergruppen definieren
+- Integriertes Logging-System für Simulationsdurchläufe
+- Headless-Simulations-Bootstrap für den Batch-Mode-Betrieb
+- Editor-Fenster zum Einsehen und Verwalten von Balance-Dateien
 
 ### Desktop App
 
-The desktop application is the control centre for the balancing workflow:
+Die Desktop-Anwendung ist die Steuerzentrale für den Balancing-Workflow:
 
-- Load and browse `.bfproject` files and balance configurations
-- Inspect and edit parameters in a structured overview
-- Run batch simulations and explore the resulting logs
-- Launch the genetic algorithm to automatically suggest optimised parameter sets
-- Available as a pre-built executable for Windows, macOS, and Linux
+- `.cb`-Dateien und Balance-Konfigurationen laden und durchsuchen
+- Parameter in einer strukturierten Übersicht einsehen und bearbeiten
+- Batch-Simulationen starten und die erzeugten Logs auswerten
+- Genetischen Algorithmus starten, um automatisch optimierte Parametersätze vorzuschlagen
+- Als vorgefertigte ausführbare Datei für Windows, macOS und Linux verfügbar
 
 ---
 
 ## Installation
 
-### Installing the Unity Plugin
+### Unity-Plugin installieren
 
-The Unity plugin is installed via the **Unity Package Manager** using a Git URL. No manual file copying is required.
+Das Unity-Plugin wird über den **Unity Package Manager** per Git-URL installiert. Es ist kein manuelles Kopieren von Dateien erforderlich.
 
-1. Open the Package Manager in Unity via **Window → Package Manager**
-2. Click the **+** button in the top-left corner
-3. Select **Add package from git URL...**
-4. Enter the following URL and confirm:
+1. Öffne den Package Manager in Unity über **Window → Package Manager**
+2. Klicke auf den **+**-Button in der oberen linken Ecke
+3. Wähle **Add package from git URL...**
+4. Gib die folgende URL ein und bestätige:
 
 ```text
 https://github.com/JonasBordewick/CoBalance.git?path=unity
 ```
 
-After a successful installation a new **CoBalance** menu entry will appear in the Unity menu bar.
+Nach erfolgreicher Installation erscheint ein neuer **CoBalance**-Menüeintrag in der Unity-Menüleiste.
 
-> **Requirements:** Unity 6000.0 or newer
+> **Voraussetzungen:** Unity 6000.0 oder neuer
 
-### Installing the Desktop App
+### Desktop App installieren
 
-Download the latest release for your operating system from the [Releases page](https://github.com/JonasBordewick/CoBalance/releases). The download is a single executable — no installation required, just run it.
+Lade die neueste Version für dein Betriebssystem von der [Releases-Seite](https://github.com/JonasBordewick/CoBalance/releases) herunter. Der Download ist eine einzelne ausführbare Datei — keine Installation erforderlich, einfach starten.
 
-| Platform | File                    |
-|----------|-------------------------|
-| Windows  | `CoBalance-windows.exe` |
-| macOS    | `CoBalance-macos`       |
-| Linux    | `CoBalance-linux`       |
+| Plattform | Datei                   |
+|-----------|-------------------------|
+| Windows   | `CoBalance-windows.exe` |
+| macOS     | `CoBalance-macos`       |
+| Linux     | `CoBalance-linux`       |
 
 ---
 
-## Getting Started
+## Erste Schritte
 
-Once both components are installed, follow the [Getting Started guide](getting-started.md) to set up your first balancing project.
+Sobald beide Komponenten installiert sind, folge dem [Erste-Schritte-Leitfaden](getting-started.md), um dein erstes Balancing-Projekt einzurichten.

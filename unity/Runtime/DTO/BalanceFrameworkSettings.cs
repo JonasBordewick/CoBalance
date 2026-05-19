@@ -2,7 +2,7 @@ using System;
 using UnityEditor;
 using UnityEngine;
 
-namespace BalancingFramework.DTO
+namespace CoBalance.DTO
 {
     [Serializable]
     public class BalanceFrameworkSettings : IExportableDTO
@@ -45,7 +45,7 @@ namespace BalancingFramework.DTO
         {
             var filePath = System.IO.Path.Combine(
                 Utilities.GetFrameworkFolderPath(),
-                "balancing-project.bfproject"
+                "project.cb"
             );
             
             if (System.IO.File.Exists(filePath))

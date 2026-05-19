@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace BalancingFramework.Logger
+namespace CoBalance.Logger
 {
     public enum BalancingLogLevel
     {
@@ -24,9 +24,9 @@ namespace BalancingFramework.Logger
         }
     }
 
-    public static class BalancingFrameworkLogger
+    public static class CoBalanceLogger
     {
-        private const string LogTag = "[BalancingFramework] ";
+        private const string LogTag = "[CoBalance] ";
         
         private const int MaxLogMessages = 1000;
         private static readonly List<BalancingLogMessage> _logMessages = new List<BalancingLogMessage>(MaxLogMessages);

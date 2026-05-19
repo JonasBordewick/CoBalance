@@ -88,7 +88,7 @@ def main():
     palette.setColor(QPalette.ColorRole.HighlightedText, QColor(255, 255, 255))
 
     app.setPalette(palette)
-    with open(resource_path("./styles/default.qss"), "r") as f:
+    with open(resource_path("styles/default.qss"), "r") as f:
         app.setStyleSheet(f.read())
 
     from app.io.watchers import DirectoryWatcherService

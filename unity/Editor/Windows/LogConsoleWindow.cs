@@ -1,9 +1,9 @@
 using System;
-using BalancingFramework.Logger;
+using CoBalance.Logger;
 using UnityEditor;
 using UnityEngine;
 
-namespace BalancingFramework.Editor.Windows
+namespace CoBalance.Editor.Windows
 {
     public class LogConsoleWindow : EditorWindow
     {
@@ -16,22 +16,22 @@ namespace BalancingFramework.Editor.Windows
 
         private string _search = "";
 
-        [MenuItem("Balancing/Log Console")]
+        [MenuItem("CoBalance/Log Console")]
         public static void Open()
         {
-            var w = GetWindow<LogConsoleWindow>("Balancing Log Console");
+            var w = GetWindow<LogConsoleWindow>("Debug Log Console");
             w.minSize = new Vector2(560, 320);
             w.Show();
         }
 
         private void OnEnable()
         {
-            BalancingFrameworkLogger.OnLogMessageAdded += OnNewLog;
+            CoBalanceLogger.OnLogMessageAdded += OnNewLog;
         }
 
         private void OnDisable()
         {
-            BalancingFrameworkLogger.OnLogMessageAdded -= OnNewLog;
+            CoBalanceLogger.OnLogMessageAdded -= OnNewLog;
         }
 
         private void OnNewLog(BalancingLogMessage _)
@@ -47,7 +47,7 @@ namespace BalancingFramework.Editor.Windows
 
             _scroll = EditorGUILayout.BeginScrollView(_scroll);
 
-            var entries = BalancingFrameworkLogger.LogMessages;
+            var entries = CoBalanceLogger.LogMessages;
             for (int i = 0; i < entries.Count; i++)
             {
                 var e = entries[i];
@@ -72,7 +72,7 @@ namespace BalancingFramework.Editor.Windows
             using (new EditorGUILayout.HorizontalScope(EditorStyles.toolbar))
             {
                 if (GUILayout.Button("Clear", EditorStyles.toolbarButton, GUILayout.Width(60)))
-                    BalancingFrameworkLogger.Clear();
+                    CoBalanceLogger.Clear();
 
                 GUILayout.Space(8);
 

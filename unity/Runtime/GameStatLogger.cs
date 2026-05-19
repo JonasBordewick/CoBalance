@@ -4,13 +4,13 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using BalancingFramework.DTO;
-using BalancingFramework.Logger;
-using BalancingFramework.Simulations;
+using CoBalance.DTO;
+using CoBalance.Logger;
+using CoBalance.Simulations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace BalancingFramework
+namespace CoBalance
 {
     public class GameStatLogger: MonoBehaviour
     {
@@ -242,7 +242,7 @@ namespace BalancingFramework
                 
                 if (_registeredInstances.Contains((obj.GetInstanceID(), key)))
                 {
-                    BalancingFrameworkLogger.LogWarning(
+                    CoBalanceLogger.LogWarning(
                         $"Duplicate log key '{key}' on object '{obj.name}' (instance ID: {obj.GetInstanceID()}). Skipping registration.");
                     continue;
                 }

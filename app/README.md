@@ -15,7 +15,7 @@ A desktop application for game balance management. It lets you inspect and edit 
 ## Requirements
 
 - Python 3.11+
-- A Unity project with the `BalancingFramework` editor extension installed
+- A Unity project with the `CoBalance` editor extension installed
 - The compiled Unity application (headless executable)
 
 ## Installation
@@ -41,7 +41,7 @@ python main.py
 
 ## Getting Started
 
-1. **Open a project** via *Project → Open* and select a `.bfproject` file.
+1. **Open a project** via *Project → Open* and select a `.cb` file.
 2. The **Parameter Overview** tab shows all balance values. Select rows to mark parameters for Auto Suggestion.
 3. Open the **Simulation** panel (right navbar) to run a single simulation batch and inspect log output in the **Logs** tab.
 4. Open the **Auto Suggestion** panel (right navbar) to configure and start the genetic algorithm. Results are written as new balance files to the project's `Balances/` directory.
