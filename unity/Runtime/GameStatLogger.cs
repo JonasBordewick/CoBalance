@@ -76,13 +76,14 @@ namespace CoBalance
                 _writeSample(t, d, v);
             }
 
-            if (_linesSinceFlush >= 50)
+            if (_linesSinceFlush >= flushEveryLines)
             {
                 _writer.Flush();
                 _linesSinceFlush = 0;
             }
         }
 
+        /// <summary>Writes a snapshot of all registered [BalanceLog] fields to the log at the current fixed time.</summary>
         public void LogGameStats()
         {
             var time = Time.fixedTime;
@@ -96,14 +97,16 @@ namespace CoBalance
                 _writeSample(time, descriptor, value);
             }
         }
-        
+
+        /// <summary>Writes a single key/value pair to the log at the current fixed time.</summary>
         public void LogGameStat(string key, object value)
         {
             var time = Time.fixedTime;
             var descriptor = new LogDescriptor(key, () => value);
             _writeSample(time, descriptor, value);
         }
-        
+
+        /// <summary>Writes a single key/value pair to the log at the given timestamp.</summary>
         public void LogGameStat(float t, string key, object value)
         {
             var descriptor = new LogDescriptor(key, () => value);

@@ -69,10 +69,58 @@ Wenn dieses Objekt bereits beim Start der Szene vorhanden ist, wird `currentHeal
 
 Wird das Objekt dagegen erst später zur Laufzeit erzeugt, sollte das GameObjekt zusätzlich `BalanceLogSource` als Komponente verweden.
 
+---
+
+## Manuelles Logging über GameStatLogger
+
+Neben dem automatischen Attribut-Logging bietet der `GameStatLogger` drei öffentliche Methoden, um Werte gezielt und manuell ins Log zu schreiben.
+
+Der Logger ist als Singleton implementiert und über `GameStatLogger.Instance` erreichbar.
+
+---
+
+### `LogGameStats()`
+
+Schreibt einen Schnappschuss **aller** registrierten `[BalanceLog]`-Felder auf einmal ins Log — mit dem aktuellen `Time.fixedTime` als Zeitstempel.
+
+Nützlich, wenn das zeitgesteuerte Logging deaktiviert ist und der Snapshot stattdessen an einem bestimmten Spielereignis ausgelöst werden soll (z. B. am Ende einer Runde).
+
+```csharp
+// Am Ende eines Kampfes alle registrierten Werte einmalig loggen
+GameStatLogger.Instance.LogGameStats();
+```
+
+---
+
+### `LogGameStat(string key, object value)`
+
+Schreibt einen einzelnen Wert mit dem angegebenen Schlüssel ins Log. Als Zeitstempel wird automatisch `Time.fixedTime` verwendet.
+
+```csharp
+// Aktuellen Punktestand manuell loggen
+GameStatLogger.Instance.LogGameStat("score", currentScore);
+
+// Beliebige numerische Werte sind erlaubt
+GameStatLogger.Instance.LogGameStat("enemies_defeated", enemyCount);
+```
+
+---
+
+### `LogGameStat(float t, string key, object value)`
+
+Wie die obige Methode, aber mit einem **manuell angegebenen Zeitstempel** `t`. Sinnvoll, wenn der Zeitpunkt des Ereignisses bekannt ist und exakt ins Log übernommen werden soll.
+
+```csharp
+// Zeitpunkt des Treffers mit einem eigenen Timestamp loggen
+float hitTime = Time.fixedTime;
+GameStatLogger.Instance.LogGameStat(hitTime, "hit_damage", damage);
+```
+
+---
+
 ## Hinweise
 
-- BalanceLog kann auf Feldern verwendet werden, die zur Laufzeit beobachtet werden sollen
-
-- für dynamisch erzeugte Objekte ist BalanceLogSource erforderlich
-
-- doppelte Log-Schlüssel auf demselben Objekt sollten vermieden werden
+- `BalanceLog` kann auf Feldern verwendet werden, die zur Laufzeit beobachtet werden sollen
+- Für dynamisch erzeugte Objekte ist `BalanceLogSource` erforderlich
+- Doppelte Log-Schlüssel auf demselben Objekt sollten vermieden werden
+- `LogGameStat` und `LogGameStats` schreiben unabhängig davon, ob zeitgesteuertes Logging aktiviert ist

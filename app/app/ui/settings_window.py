@@ -81,6 +81,10 @@ class SettingsWindow(QWidget):
         project_group = QGroupBox("Project Settings")
         project_form = QFormLayout()
 
+        self.time_based_logging_checkbox = QCheckBox("Enable time-based logging")
+        self.time_based_logging_checkbox.setEnabled(has_project)
+        self.time_based_logging_checkbox.setToolTip("When enabled, the simulation logs data at a fixed time interval. When disabled, logging is event-driven.")
+
         self.log_tick_rate_spinbox = QSpinBox()
         self.log_tick_rate_spinbox.setRange(1, 100)
         self.log_tick_rate_spinbox.setEnabled(has_project)
@@ -97,6 +101,7 @@ class SettingsWindow(QWidget):
         executable_row_layout.addWidget(self.executable_path_edit)
         executable_row_layout.addWidget(self.executable_browse_button)
 
+        project_form.addRow("", self.time_based_logging_checkbox)
         project_form.addRow("Logging Interval [s]", self.log_tick_rate_spinbox)
         project_form.addRow("Unity Executable", executable_row)
         project_group.setLayout(project_form)
@@ -120,6 +125,7 @@ class SettingsWindow(QWidget):
         self.time_scale_spinbox.valueChanged.connect(self._settings_view_model.set_default_time_scale)
         self.max_time_spinbox.valueChanged.connect(self._settings_view_model.set_default_max_simulation_time)
 
+        self.time_based_logging_checkbox.toggled.connect(self._settings_view_model.set_enable_time_based_logging)
         self.log_tick_rate_spinbox.valueChanged.connect(self._settings_view_model.set_default_log_tick_rate)
         self.executable_path_edit.textChanged.connect(self._settings_view_model.set_unity_application_path)
         self.executable_browse_button.clicked.connect(self._on_browse_executable_clicked)
@@ -145,6 +151,8 @@ class SettingsWindow(QWidget):
         self.max_time_spinbox.setValue(app.default_max_simulation_time)
         self.runs_spinbox.setValue(app.default_number_of_runs)
         if project:
+            self.time_based_logging_checkbox.setEnabled(True)
+            self.time_based_logging_checkbox.setChecked(project.enable_time_based_logging)
             self.log_tick_rate_spinbox.setEnabled(True)
             self.log_tick_rate_spinbox.setValue(math.floor(project.default_log_tick_rate * 0.02))
 
@@ -155,6 +163,8 @@ class SettingsWindow(QWidget):
             self.executable_browse_button.setEnabled(True)
 
         else:
+            self.time_based_logging_checkbox.setEnabled(False)
+            self.time_based_logging_checkbox.setChecked(False)
             self.log_tick_rate_spinbox.setEnabled(False)
             self.log_tick_rate_spinbox.clear()
 

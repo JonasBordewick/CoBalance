@@ -98,6 +98,11 @@ class SettingsViewModel(QObject):
             self.save()
 
 
+    def set_enable_time_based_logging(self, checked: bool):
+        if self._project_settings is None:
+            return
+        self._project_settings.enable_time_based_logging = checked
+
     def set_unity_application_path(self, text: str):
         if self._project_settings is None:
             return
