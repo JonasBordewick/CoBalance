@@ -33,9 +33,7 @@ jobs:
 
       - name: Install MkDocs
         run: |
-          pip install mkdocs-material
-          # Falls du Plugins nutzt, hier ergänzen:
-          # pip install mkdocs-mermaid2-plugin mkdocs-glightbox
+          pip install mkdocs-material mkdocs-static-i18n
 
       - name: Build site
         run: mkdocs build --strict

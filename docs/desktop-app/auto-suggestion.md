@@ -34,7 +34,7 @@ Bevor das Fenster geöffnet wird, sollten in der [Parameteransicht](parameter-vi
 | **Iterations per Individual** | Wie oft jeder Kandidat simuliert wird. Mehrere Iterationen mitteln zufällige Schwankungen heraus und führen zu verlässlicheren Fitnesswerten. |
 | **Choose Top** | Wie viele der besten Kandidaten am Ende als separate Balance-Dateien gespeichert werden. |
 | **Speed Multiplier** | Beschleunigungsfaktor pro Simulationslauf (1× bis 20×). |
-| **Max Simulation Time [s]** | Maximale Dauer pro Simulationslauf in Sekunden. |
+| **Max Simulation Time [s]** | Maximale Dauer pro Simulationslauf in Sekunden. Siehe [Simulation](./simulation.md)|
 
 ### Parameter Settings
 

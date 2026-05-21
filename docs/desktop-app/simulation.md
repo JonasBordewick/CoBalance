@@ -22,7 +22,7 @@ Das Fenster wird über die rechte Navigationsleiste geöffnet.
 |---|---|
 | **Number of Runs** | Wie oft die Simulation mit der gewählten Balance wiederholt wird. Mehrere Läufe mitteln zufällige Schwankungen heraus. |
 | **Speed Multiplier** | Beschleunigungsfaktor für die Simulation (1× bis 20×). Höhere Werte reduzieren die Laufzeit, können aber die Genauigkeit beeinflussen. |
-| **Max Simulation Time [s]** | Maximale Dauer eines einzelnen Simulationslaufs in Sekunden. Der Lauf wird automatisch beendet, wenn dieser Wert überschritten wird. |
+| **Max Simulation Time [s]** | Maximale Dauer eines einzelnen Simulationslaufs in Sekunden. Der Lauf wird automatisch beendet, wenn dieser Wert überschritten wird. Dieser Parameter dient als Fallback, damit es keine endlosen Simulationen gibt. |
 
 ---
 

@@ -1,6 +1,4 @@
-# Balancing Tool UI
-
-A desktop application for game balance management. It lets you inspect and edit balance parameter files, run Unity simulations in batch mode, and use a genetic algorithm to automatically find optimised balance configurations.
+# CoBaance UI
 
 ## Features
 
@@ -22,8 +20,8 @@ A desktop application for game balance management. It lets you inspect and edit 
 
 ```bash
 # Clone the repository
-git clone <repo-url>
-cd balancing-tool-ui
+git clone https://github.com/JonasBordewick/CoBalance
+cd CoBalance/app
 
 # Create and activate a virtual environment
 python -m venv .venv

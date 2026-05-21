@@ -30,6 +30,37 @@ extra:
 
 plugins:
   - search
+  - i18n:
+      docs_structure: suffix
+      fallback_to_default: true
+      reconfigure_material: true
+      reconfigure_search: true
+      languages:
+        - locale: de
+          default: true
+          name: Deutsch
+          build: true
+        - locale: en
+          name: English
+          build: true
+          nav_translations:
+            Home: Home
+            Erste Schritte: Getting Started
+            Unity Plugin: Unity Plugin
+            Überblick: Overview
+            Entitäten: Entities
+            Parameter: Parameters
+            Logging: Logging
+            Simulation: Simulation
+            Auto-Suggestion: Auto Suggestion
+            Desktop App: Desktop App
+            Vergleich: Comparison
+            Auto Suggestion: Auto Suggestion
+            Einstellungen: Settings
+            Beispiele: Examples
+            Scriptable Objects: Scriptable Objects
+            Simple Game Object: Simple Game Object
+            Advanced Parameter Example: Advanced Parameter Example
 
 markdown_extensions:
   - admonition
