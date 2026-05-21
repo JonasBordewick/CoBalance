@@ -134,7 +134,7 @@ class UnitySimulationRunner:
             "-projectPath", job.project_path,
             "-batchmode",
             "-nographics",
-            "-executeMethod", "BalancingFramework.Editor.SimulationBatchEntry.Run",
+            "-executeMethod", "CoBalance.Editor.SimulationBatchEntry.Run",
             "-jobConfig", job.job_file_path,
             # "-logFile", "/tmp/balancing-tool-ui/out/unity.log"
         ]
