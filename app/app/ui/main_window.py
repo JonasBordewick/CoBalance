@@ -485,7 +485,7 @@ class MainWindow(QMainWindow):
 
     # Window Title Handler
     def _update_window_title(self):
-        title = "Balance Tool"
+        title = "CoBalance"
         if self.balance_view_model.is_loaded:
             title += f" - {self.project_context_view_model.current_project_name} - {self.project_context_view_model.current_balance}"
             if self.balance_view_model.is_dirty or self.logs_group_view_model.is_dirty:
