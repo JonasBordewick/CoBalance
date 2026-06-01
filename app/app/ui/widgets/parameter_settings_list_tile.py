@@ -94,11 +94,13 @@ class ParameterSettingsListTile(QWidget):
         if self._entry.type == "float":
             self.min_spin.setValue(min_value)
             self.max_spin.setValue(max_value)
-            self.step_spin.setValue(0.1)
+            self.step_spin.setValue(0.2 * (max_value - min_value))
         else:
-            self.min_spin.setValue(int(math.ceil(min_value)))
-            self.max_spin.setValue(int(math.ceil(max_value)))
-            self.step_spin.setValue(1)
+            int_min = int(math.ceil(min_value))
+            int_max = int(math.ceil(max_value))
+            self.min_spin.setValue(int_min)
+            self.max_spin.setValue(int_max)
+            self.step_spin.setValue(max(1, round(0.2 * (int_max - int_min))))
 
     def get_settings(self) -> ParameterSettings:
         return ParameterSettings(
