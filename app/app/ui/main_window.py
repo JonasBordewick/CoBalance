@@ -21,6 +21,7 @@ from app.ui.settings_window import SettingsWindow
 from app.ui.simulation_window import SimulationWindow
 from app.ui.utilities import create_group_from_selection_via_dialog
 from app.ui.widgets import NavbarIconButton, HoverTooltip, NavbarIconButtonGroup, SelectionButton
+from app.utilities import resource_path
 from app.viewmodels import AppViewModel, BalanceViewModel, LogsExplorerViewModel, ProjectContextViewModel
 from app.viewmodels.settings_view_model import SettingsViewModel
 from app.viewmodels.job_view_model import JobViewModel
@@ -144,12 +145,12 @@ class MainWindow(QMainWindow):
     def _build_left_bar(self) -> QWidget:
         button_group = NavbarIconButtonGroup()
 
-        btn_overview = NavbarIconButton("❌", tooltip=HoverTooltip(text="Parameter Overview — Browse and edit all parameters of the loaded balance file."))
+        btn_overview = NavbarIconButton(resource_path("assets/parameter.svg"), tooltip=HoverTooltip(text="Parameter Overview — Browse and edit all parameters of the loaded balance file."))
         btn_overview.clicked.connect(self._on_overview_button_clicked)
         btn_overview.setProperty("active", "true")
-        btn_compare = NavbarIconButton("❌", tooltip=HoverTooltip(text="Entity Comparison — Compare parameter values across multiple entities side by side."))
+        btn_compare = NavbarIconButton(resource_path("assets/comparison.svg"), tooltip=HoverTooltip(text="Entity Comparison — Compare parameter values across multiple entities side by side."))
         btn_compare.clicked.connect(self._on_comparison_button_clicked)
-        btn_logs = NavbarIconButton("❌", tooltip=HoverTooltip(text="Logs — Explore and analyze simulation log files."))
+        btn_logs = NavbarIconButton(resource_path("assets/log-analysis.svg"), tooltip=HoverTooltip(text="Logs — Explore and analyze simulation log files."))
         btn_logs.clicked.connect(self._on_logs_button_clicked)
 
         button_group.add(btn_overview)
@@ -160,14 +161,14 @@ class MainWindow(QMainWindow):
 
     def _build_right_bar(self):
         btn_simulation = NavbarIconButton(
-            "❌",
+            resource_path("assets/simulation-settings.svg"),
             tooltip=HoverTooltip(text="Simulation — Configure and launch simulation runs with the current balance."),
             alignment=Qt.AlignmentFlag.AlignRight
         )
         btn_simulation.clicked.connect(self._on_simulation_button_clicked)
 
         btn_suggestion = NavbarIconButton(
-            "❌",
+            resource_path("assets/auto-suggestion.svg"),
             tooltip=HoverTooltip(text="Auto Suggestion — Run the genetic algorithm to find optimized balance parameters automatically."),
             alignment=Qt.AlignmentFlag.AlignRight
         )

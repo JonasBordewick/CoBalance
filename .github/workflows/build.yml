@@ -1,0 +1,98 @@
+name: Build All Platforms
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            artifact: CoBalance-Windows
+            path: app/dist/CoBalance.exe
+          - os: macos-latest
+            artifact: CoBalance-macOS
+            path: app/CoBalance.dmg
+          - os: ubuntu-22.04
+            artifact: CoBalance-Linux
+            path: app/CoBalance-x86_64.AppImage
+    runs-on: ${{ matrix.os }}
+    
+    defaults:
+      run:
+        working-directory: app   # ← alle run-Steps laufen in app/
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      
+      - name: Install Python deps
+        run: |
+          pip install --upgrade pip
+          pip install PyQt6 pyinstaller
+      
+      - name: Build with PyInstaller
+        run: pyinstaller CoBalance.spec
+      
+      # ===== macOS: in DMG verpacken =====
+      - name: Install create-dmg (macOS)
+        if: matrix.os == 'macos-latest'
+        run: brew install create-dmg
+      
+      - name: Create DMG (macOS)
+        if: matrix.os == 'macos-latest'
+        run: |
+          create-dmg \
+            --volname "CoBalance" \
+            --window-size 600 400 \
+            --icon "CoBalance.app" 175 190 \
+            --app-drop-link 425 190 \
+            "CoBalance.dmg" \
+            "dist/CoBalance.app"
+      
+      # ===== Linux: in AppImage verpacken =====
+      - name: Install AppImage tools (Linux)
+        if: matrix.os == 'ubuntu-22.04'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libfuse2
+          wget -q https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage
+          chmod +x appimagetool-x86_64.AppImage
+      
+      - name: Build AppImage (Linux)
+        if: matrix.os == 'ubuntu-22.04'
+        run: |
+          mkdir -p CoBalance.AppDir/usr/bin
+          cp dist/CoBalance CoBalance.AppDir/usr/bin/
+          cp assets/icon.png CoBalance.AppDir/cobalance.png
+          
+          cat > CoBalance.AppDir/cobalance.desktop << 'EOF'
+          [Desktop Entry]
+          Name=CoBalance
+          Exec=CoBalance
+          Icon=cobalance
+          Type=Application
+          Categories=Utility;
+          EOF
+          
+          cat > CoBalance.AppDir/AppRun << 'EOF'
+          #!/bin/bash
+          HERE="$(dirname "$(readlink -f "${0}")")"
+          exec "${HERE}/usr/bin/CoBalance" "$@"
+          EOF
+          chmod +x CoBalance.AppDir/AppRun
+          
+          ./appimagetool-x86_64.AppImage CoBalance.AppDir CoBalance-x86_64.AppImage
+      
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          path: ${{ matrix.path }}

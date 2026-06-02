@@ -7,7 +7,8 @@ Date: 12.02.2026
 Contact: jonas.bordewick@uni-a.de
 """
 
-from PyQt6.QtCore import Qt, QTimer, QPoint
+from PyQt6.QtCore import Qt, QTimer, QPoint, QSize
+from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import QPushButton
 
 from app.ui.widgets.hover_tooltip import HoverTooltip
@@ -29,9 +30,11 @@ class NavbarIconButtonGroup:
 
 class NavbarIconButton(QPushButton):
     """Icon button for the navigation bar with a delayed custom HoverTooltip."""
-    def __init__(self, icon: str, alignment: Qt.AlignmentFlag = Qt.AlignmentFlag.AlignLeft,
+    def __init__(self, icon_path: str, alignment: Qt.AlignmentFlag = Qt.AlignmentFlag.AlignLeft,
                  tooltip: HoverTooltip = None):
-        super().__init__(icon)
+        super().__init__()
+        self.setIcon(QIcon(icon_path))
+        self.setIconSize(QSize(16, 16))
 
         self._alignment = alignment
         if alignment == Qt.AlignmentFlag.AlignLeft:

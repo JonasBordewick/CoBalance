@@ -14,6 +14,7 @@ from PyQt6.QtWidgets import QApplication
 from app.ui import MainWindow
 from app.viewmodels import AppViewModel, BalanceViewModel, LogsGroupViewModel, LogsExplorerViewModel, \
     ProjectContextViewModel
+from app.utilities import resource_path
 
 import sys
 import traceback
@@ -133,18 +134,6 @@ def main():
     window.show()
     sys.exit(app.exec())
 
-import sys
-import os
-
-def resource_path(relative_path):
-    """Liefert den absoluten Pfad — funktioniert im Dev-Modus UND nach PyInstaller-Build."""
-    if hasattr(sys, '_MEIPASS'):
-        # Läuft als gepackte Exe → temp-Ordner von PyInstaller
-        base_path = sys._MEIPASS
-    else:
-        # Läuft normal aus dem Source-Code
-        base_path = os.path.abspath(".")
-    return os.path.join(base_path, relative_path)
 
 if __name__ == "__main__":
     main()

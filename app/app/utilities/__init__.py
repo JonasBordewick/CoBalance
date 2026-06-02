@@ -9,5 +9,6 @@ Contact: jonas.bordewick@uni-a.de
 
 from .string_methods import normalize_group_name
 from .parsing import parse_log_file
+from .resources import resource_path
 
-__all__ = ["normalize_group_name", "parse_log_file"]
+__all__ = ["normalize_group_name", "parse_log_file", "resource_path"]
