@@ -35,7 +35,7 @@ https://github.com/JonasBordewick/CoBalance.git?path=unity
 Das Tool wird als eigenständige Anwendung ausgeliefert – keine Python-Installation notwendig.
 
 !!! warning
-        Die App ist **nicht code-signiert**, weshalb das Betriebssystem beim ersten Öffnen eine Warnung anzeigt. Das ist erwartet. Folge den Schritten für dein System:
+    Die App ist **nicht code-signiert**, weshalb das Betriebssystem beim ersten Öffnen eine Warnung anzeigt. Das ist erwartet. Folge den Schritten für dein System:
 
 ### Windows
 
