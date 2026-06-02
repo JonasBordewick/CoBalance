@@ -2,9 +2,9 @@
 import sys
 
 if sys.platform == 'darwin':
-    icon_file = 'icon.icns'
+    icon_file = 'assets/icon.icns'
 elif sys.platform == 'win32':
-    icon_file = 'icon.ico'
+    icon_file = 'assets/icon.ico'
 else:
     icon_file = None  # Linux: Icon kommt später ins AppImage
 
@@ -50,9 +50,9 @@ exe = EXE(
 if sys.platform == 'darwin':
     app = BUNDLE(
         exe,
-        name='MeinProgramm.app',
+        name='CoBalance.app',
         icon=icon_file,
-        bundle_identifier='com.deinname.meinprogramm',
+        bundle_identifier='dev.bordewick.cobalance',
         info_plist={
             'NSHighResolutionCapable': 'True',
             'CFBundleShortVersionString': '1.0.0',

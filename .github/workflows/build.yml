@@ -51,7 +51,7 @@ jobs:
         run: |
           create-dmg \
             --volname "CoBalance" \
-            --window-size 600 400 \
+            --window-size 1200 800 \
             --icon "CoBalance.app" 175 190 \
             --app-drop-link 425 190 \
             "CoBalance.dmg" \
