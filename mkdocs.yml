@@ -45,6 +45,7 @@ plugins:
           build: true
           nav_translations:
             Home: Home
+            Installation: Installation
             Erste Schritte: Getting Started
             Unity Plugin: Unity Plugin
             Überblick: Overview
@@ -72,6 +73,7 @@ markdown_extensions:
 
 nav:
   - Home: index.md
+  - Installation: installation.md
   - Erste Schritte: getting-started.md
   - Unity Plugin:
       - Überblick: unity-plugin/overview.md
