@@ -1,4 +1,4 @@
-# Installation & Einrichtung
+# Installation
 
 **Ziel:** Die CoBalance-Toolchain auf deinem Rechner einrichten, bevor du mit den eigentlichen Übungen beginnst. Am Ende hast du das Unity-Beispielprojekt geöffnet, das Balancing Tool gestartet und bestätigt, dass beide Dateien austauschen können.
 
@@ -34,7 +34,8 @@ https://github.com/JonasBordewick/CoBalance.git?path=unity
 
 Das Tool wird als eigenständige Anwendung ausgeliefert – keine Python-Installation notwendig.
 
-> ⚠️ Die App ist **nicht code-signiert**, weshalb das Betriebssystem beim ersten Öffnen eine Warnung anzeigt. Das ist erwartet. Folge den Schritten für dein System:
+!!! warning
+        Die App ist **nicht code-signiert**, weshalb das Betriebssystem beim ersten Öffnen eine Warnung anzeigt. Das ist erwartet. Folge den Schritten für dein System:
 
 ### Windows
 

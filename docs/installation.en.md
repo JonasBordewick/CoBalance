@@ -1,4 +1,4 @@
-# Installation & Setup
+# Installation 
 
 **Goal:** Get the CoBalance toolchain running on your machine before the first real exercise. By the end of this step you will have the example Unity project open, the Balancing Tool launched, and you'll have confirmed that the two can exchange files.
 
@@ -34,7 +34,8 @@ https://github.com/JonasBordewick/CoBalance.git?path=unity
 
 The tool ships as a standalone application — no Python installation needed.
 
-> ⚠️ The app is **not code-signed**, so your OS will warn you the first time you open it. This is expected. Follow the steps for your system:
+!!! warning
+        The app is **not code-signed**, so your OS will warn you the first time you open it. This is expected. Follow the steps for your system:
 
 ### Windows
 
@@ -51,13 +52,11 @@ The tool ships as a standalone application — no Python installation needed.
 ### Linux
 
 1. Download [Linux (AppImage)](https://github.com/USER/REPO/releases/latest/download/CoBalance-x86_64.AppImage)
-2. Make it executable (file manager → Properties → Permissions → "Allow executing", or in a terminal):
+2. Make it executable & run it(file manager → Properties → Permissions → "Allow executing", or in a terminal):
 
 ```sh
 chmod +x CoBalance-x86_64.AppImage
 ```
-
-3. Run it.
 
 ---
 
