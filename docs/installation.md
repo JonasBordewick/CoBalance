@@ -39,19 +39,19 @@ Das Tool wird als eigenständige Anwendung ausgeliefert – keine Python-Install
 
 ### Windows
 
-1. Lade [Windows](https://github.com/USER/REPO/releases/latest/download/CoBalance.exe) herunter
+1. Lade [Windows](https://github.com/JonasBordewick/CoBalance/releases/latest/download/CoBalance.exe) herunter
 2. Doppelklicke auf die `.exe`. Falls "_Windows protected your PC_" erscheint, klicke auf **More Info → Run anyway**.
 
 ### macOS
 
-1. Lade [macOS](https://github.com/USER/REPO/releases/latest/download/CoBalance.dmg) herunter
+1. Lade [macOS](https://github.com/JonasBordewick/CoBalance/releases/latest/download/CoBalance.dmg) herunter
 2. Per Doppelklick öffnen wird wahrscheinlich mit der Meldung abgelehnt, dass der Entwickler nicht verifiziert werden kann. Stattdessen:
     1. **Rechtsklick** auf die App → **Öffnen** → im Dialog erneut **Öffnen** klicken.
     2. Alternativ: **Systemeinstellungen → Datenschutz & Sicherheit**, nach unten scrollen zur Meldung über die blockierte App → **Trotzdem öffnen**.
 
 ### Linux
 
-1. Lade [Linux (AppImage)](https://github.com/USER/REPO/releases/latest/download/CoBalance-x86_64.AppImage) herunter
+1. Lade [Linux (AppImage)](https://github.com/JonasBordewick/CoBalance/releases/latest/download/CoBalance-x86_64.AppImage) herunter
 2. Mache die Datei ausführbar (Dateimanager → Eigenschaften → Berechtigungen → "Ausführen erlauben", oder im Terminal):
 
 ```sh

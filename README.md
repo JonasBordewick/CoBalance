@@ -53,9 +53,9 @@ Download the latest release for your operating system from the [Releases page](h
 
 | Platform | File                    |
 |----------|-------------------------|
-| Windows  | [CoBalance.exe](https://github.com/USER/REPO/releases/latest/download/CoBalance.exe) |
-| macOS    | [CoBalance.dmg](https://github.com/USER/REPO/releases/latest/download/CoBalance.dmg)       |
-| Linux    | [CoBalance-x86_64.AppImage]((https://github.com/USER/REPO/releases/latest/download/CoBalance-x86_64.AppImage))      |
+| Windows  | [CoBalance.exe](https://github.com/JonasBordewick/CoBalance/releases/latest/download/CoBalance.exe) |
+| macOS    | [CoBalance.dmg](https://github.com/JonasBordewick/CoBalance/releases/latest/download/CoBalance.dmg)       |
+| Linux    | [CoBalance-x86_64.AppImage]((https://github.com/JonasBordewick/CoBalance/releases/latest/download/CoBalance-x86_64.AppImage))      |
 
 #### Option B — Build from Source
 
