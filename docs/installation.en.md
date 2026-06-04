@@ -6,8 +6,8 @@
 
 ## Step 1 – Prepare the Unity Project
 
-- Create a new project: **New Project → 2D (Built-in Render Pipeline)**, Unity 6.
-- Download [TODO: package name]() from the release page or Digicampus.
+- Create a new project: **New Project → Universal 2D**, Unity 6.
+- Download [CoBalance-Example.unitypackage](https://github.com/JonasBordewick/CoBalance/releases/latest/download/CoBalance-Example.unitypackage) from the release page.
 - In Unity: **Assets → Import Package → Custom Package...**, select the downloaded `.unitypackage`.
 - In the import dialog, leave everything selected and click **Import**.
 
@@ -39,19 +39,19 @@ The tool ships as a standalone application — no Python installation needed.
 
 ### Windows
 
-1. Download [Windows](https://github.com/USER/REPO/releases/latest/download/CoBalance.exe)
+1. Download [Windows](https://github.com/JonasBordewick/CoBalance/releases/latest/download/CoBalance.exe)
 2. Double-click the `.exe`. If you see "_Windows protected your PC_", click **More Info → Run anyway**.
 
 ### macOS
 
-1. Download [macOS](https://github.com/USER/REPO/releases/latest/download/CoBalance.dmg) 
+1. Download [macOS](https://github.com/JonasBordewick/CoBalance/releases/latest/download/CoBalance.dmg) 
 2. Double-clicking will likely say the developer cannot be verified. Instead:
     1. **Right-click** the app → **Open** → click **Open** again in the dialog.
     2. Alternatively: **System Settings → Privacy & Security**, scroll down to the blocked-app message → **Open Anyway**.
 
 ### Linux
 
-1. Download [Linux (AppImage)](https://github.com/USER/REPO/releases/latest/download/CoBalance-x86_64.AppImage)
+1. Download [Linux (AppImage)](https://github.com/JonasBordewick/CoBalance/releases/latest/download/CoBalance-x86_64.AppImage)
 2. Make it executable & run it(file manager → Properties → Permissions → "Allow executing", or in a terminal):
 
 ```sh

@@ -6,8 +6,8 @@
 
 ## Schritt 1 – Unity-Projekt vorbereiten
 
-- Erstelle ein neues Projekt: **New Project → 2D (Built-in Render Pipeline)**, Unity 6.
-- Lade [TODO: Paketname]() von der Release-Seite oder Digicampus herunter.
+- Erstelle ein neues Projekt: **New Project → Universal 2D**, Unity 6.
+- Lade [CoBalance-Example.unitypackage](https://github.com/JonasBordewick/CoBalance/releases/latest/download/CoBalance-Example.unitypackage) von der Release-Seite herunter.
 - In Unity: **Assets → Import Package → Custom Package...**, wähle das heruntergeladene `.unitypackage`.
 - Lass im Import-Dialog alles ausgewählt und klicke auf **Import**.
 

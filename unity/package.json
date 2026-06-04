@@ -2,7 +2,7 @@
     "name": "dev.bordewick.cobalance",
     "version": "1.0.0",
     "displayName": "CoBalance for Unity",
-    "description": "Unity-side companion for the CoBalance balancing tool.",
+    "description": "Runtime and editor extensions for exposing balance parameters, bootstrapping headless simulations, and reporting fitness scores to the CoBalance desktop application.",
     "unity": "6000.0",
     "author": {
         "name": "Bordewick Jonas"
