@@ -25,13 +25,13 @@ Dieses Component muss dem Root-Objekt eines GameObjects oder Prefabs hinzugefüg
 
 Der `EntityDescriptorComponent` definiert grundlegende Informationen über die Entität:
 
-- **ID**  
+- **ID** _string_  
   Eine eindeutige Kennung für die Entität.
 
-- **Display Name**  
+- **Display Name** _string_  
   Ein lesbarer Name, der im Balancing Tool angezeigt wird.
 
-- **Category**  
+- **Category**  _string_
   Eine Kategorie zur Gruppierung von Entitäten.
 
 Diese Informationen werden vom Framework verwendet, um Entitäten im externen Tool eindeutig zu identifizieren.

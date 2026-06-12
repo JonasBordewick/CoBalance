@@ -74,7 +74,7 @@ The `BalanceParameter` attribute can optionally be provided with additional info
 For example, a custom display name can be defined:
 
 ```csharp
-[BalanceParameter(DisplayName = "Enemy Health")]
+[BalanceParameter(displayName: "Enemy Health")]
 private int health;
 ```
 
@@ -82,7 +82,7 @@ This means the balancing tool will show `Enemy Health` instead of the field name
 
 Optionally, a custom key `(Key)` can also be specified:
 ```csharp
-[BalanceParameter(Key = "enemy_health", DisplayName = "Enemy Health")]
+[BalanceParameter(key: "enemy_health", displayName: "Enemy Health")]
 private int health;
 ```
 This is particularly useful when parameters should be uniquely named independently of the actual field name.

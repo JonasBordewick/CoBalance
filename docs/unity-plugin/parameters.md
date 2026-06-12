@@ -74,7 +74,7 @@ Das Attribut `BalanceParameter` kann optional mit zusätzlichen Informationen ve
 Zum Beispiel kann ein eigener Anzeigename definiert werden:
 
 ```csharp
-[BalanceParameter(DisplayName = "Enemy Health")]
+[BalanceParameter(displayName: "Enemy Health")]
 private int health;
 ```
 
@@ -82,7 +82,7 @@ Dadurch wird im Balancing Tool nicht der Feldname `Health`, sondern der Anzeigen
 
 Optional kann außerdem ein eigener Schlüssel `(Key)` angegeben werden:
 ```csharp
-[BalanceParameter(Key = "enemy_health", DisplayName = "Enemy Health")]
+[BalanceParameter(key: "enemy_health", displayName: "Enemy Health")]
 private int health;
 ```
 Das ist vor allem dann nützlich, wenn Parameter unabhängig vom tatsächlichen Feldnamen eindeutig benannt werden sollen.

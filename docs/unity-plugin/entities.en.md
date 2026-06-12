@@ -25,13 +25,13 @@ This component must be added to the root object of a GameObject or Prefab.
 
 The `EntityDescriptorComponent` defines basic information about the entity:
 
-- **ID**  
+- **ID**  _string_
   A unique identifier for the entity.
 
-- **Display Name**  
+- **Display Name**  _string_
   A human-readable name shown in the balancing tool.
 
-- **Category**  
+- **Category**  _string_
   A category for grouping entities.
 
 This information is used by the framework to uniquely identify entities in the external tool.

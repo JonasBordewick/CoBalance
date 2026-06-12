@@ -39,19 +39,19 @@ The tool ships as a standalone application — no Python installation needed.
 
 ### Windows
 
-1. Download [Windows](https://github.com/USER/REPO/releases/latest/download/CoBalance.exe)
+1. Download for Windows [CoBalance.exe](https://github.com/USER/REPO/releases/latest/download/CoBalance.exe)
 2. Double-click the `.exe`. If you see "_Windows protected your PC_", click **More Info → Run anyway**.
 
 ### macOS
 
-1. Download [macOS](https://github.com/USER/REPO/releases/latest/download/CoBalance.dmg) 
+1. Download for macOS [CoBalance.dmg](https://github.com/USER/REPO/releases/latest/download/CoBalance.dmg) 
 2. Double-clicking will likely say the developer cannot be verified. Instead:
     1. **Right-click** the app → **Open** → click **Open** again in the dialog.
     2. Alternatively: **System Settings → Privacy & Security**, scroll down to the blocked-app message → **Open Anyway**.
 
 ### Linux
 
-1. Download [Linux (AppImage)](https://github.com/USER/REPO/releases/latest/download/CoBalance-x86_64.AppImage)
+1. Download for Linux [CoBalance-x86_64.AppImage](https://github.com/USER/REPO/releases/latest/download/CoBalance-x86_64.AppImage)
 2. Make it executable & run it(file manager → Properties → Permissions → "Allow executing", or in a terminal):
 
 ```sh
@@ -65,7 +65,7 @@ chmod +x CoBalance-x86_64.AppImage
 This is the real checkpoint: Unity sees the plugin **and** the tool can open the project file.
 
 1. **In Unity:** confirm that a **CoBalance** entry is present in the menu bar.
-2. Locate the file **`project.cb`** in your project folder under **`CoBalance/`** (it was created automatically when the plugin was installed).
+2. Locate the file **`project.cb`** in your project folder under **`<ProjectPath>/CoBalance/`** (it was created automatically when the plugin was installed).
 3. **In the Balancing Tool:** open that file via **Project → Open** (`Ctrl+O`).
 
 > ✅ **Setup complete:** The `project.cb` file opens in the Balancing Tool and shows the Parameters view. If you got here, your toolchain is ready — continue with [Getting Started](getting-started.md).

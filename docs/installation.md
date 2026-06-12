@@ -39,19 +39,19 @@ Das Tool wird als eigenständige Anwendung ausgeliefert – keine Python-Install
 
 ### Windows
 
-1. Lade [Windows](https://github.com/JonasBordewick/CoBalance/releases/latest/download/CoBalance.exe) herunter
+1. Lade für Windows [CoBalance.exe](https://github.com/JonasBordewick/CoBalance/releases/latest/download/CoBalance.exe) herunter
 2. Doppelklicke auf die `.exe`. Falls "_Windows protected your PC_" erscheint, klicke auf **More Info → Run anyway**.
 
 ### macOS
 
-1. Lade [macOS](https://github.com/JonasBordewick/CoBalance/releases/latest/download/CoBalance.dmg) herunter
+1. Lade für macOS [CoBalance.dmg](https://github.com/JonasBordewick/CoBalance/releases/latest/download/CoBalance.dmg) herunter
 2. Per Doppelklick öffnen wird wahrscheinlich mit der Meldung abgelehnt, dass der Entwickler nicht verifiziert werden kann. Stattdessen:
     1. **Rechtsklick** auf die App → **Öffnen** → im Dialog erneut **Öffnen** klicken.
     2. Alternativ: **Systemeinstellungen → Datenschutz & Sicherheit**, nach unten scrollen zur Meldung über die blockierte App → **Trotzdem öffnen**.
 
 ### Linux
 
-1. Lade [Linux (AppImage)](https://github.com/JonasBordewick/CoBalance/releases/latest/download/CoBalance-x86_64.AppImage) herunter
+1. Lade für Linux [CoBalance-x86_64.AppImage](https://github.com/JonasBordewick/CoBalance/releases/latest/download/CoBalance-x86_64.AppImage) herunter
 2. Mache die Datei ausführbar (Dateimanager → Eigenschaften → Berechtigungen → "Ausführen erlauben", oder im Terminal):
 
 ```sh
@@ -68,7 +68,7 @@ chmod +x CoBalance-x86_64.AppImage
 Dies ist der eigentliche Checkpoint: Unity erkennt das Plugin **und** das Tool kann die Projektdatei öffnen.
 
 1. **In Unity:** Prüfe, ob ein **CoBalance**-Eintrag in der Unity-Menüleiste vorhanden ist.
-2. Suche die Datei **`project.cb`** im Ordner **`CoBalance/`** deines Projekts (sie wurde beim Installieren des Plugins automatisch angelegt).
+2. Suche die Datei **`project.cb`** im Ordner **`<ProjectPath>/CoBalance/`** deines Projekts (sie wurde beim Installieren des Plugins automatisch angelegt).
 3. **Im Balancing Tool:** Öffne die Datei über **Project → Open** (`Strg+O`).
 
 > ✅ **Einrichtung abgeschlossen:** Die `project.cb`-Datei öffnet sich im Balancing Tool und zeigt die Parameter-Ansicht. Wenn du hier angelangt bist, ist deine Toolchain bereit — weiter geht es mit [Erste Schritte](getting-started.md).
