@@ -136,7 +136,7 @@ class UnitySimulationRunner:
             "-nographics",
             "-executeMethod", "CoBalance.Editor.SimulationBatchEntry.Run",
             "-jobConfig", job.job_file_path,
-            # "-logFile", "/tmp/balancing-tool-ui/out/unity.log"
+            # "-logFile", "C:\\Users\\Jonas Bordewick\\Documents\\Masterthesis\\CoBalance\\app\\dist\\log.txt"
         ]
         if job.create_logs:
             return base
