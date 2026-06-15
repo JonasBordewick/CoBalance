@@ -75,10 +75,10 @@ class AutoSuggestionWindow(QWidget):
         self._method_combo.setToolTip("The optimization algorithm to use. Currently only Genetic Algorithm is supported.")
 
         self._population_size_spinbox = QSpinBox()
-        self._population_size_spinbox.setMinimum(1)
+        self._population_size_spinbox.setMinimum(3)
         self._population_size_spinbox.setMaximum(10000)
         self._population_size_spinbox.setValue(50)
-        self._population_size_spinbox.setToolTip("Number of candidate solutions in each generation.")
+        self._population_size_spinbox.setToolTip("Number of candidate solutions in each generation. Must be at least 3.")
 
         self._num_generations_spinbox = QSpinBox()
         self._num_generations_spinbox.setMinimum(1)
@@ -193,6 +193,14 @@ class AutoSuggestionWindow(QWidget):
 
         if not scene_name:
             QMessageBox.warning(self, "Missing Scene", "Please select a scene.")
+            return
+
+        if population_size < 3:
+            QMessageBox.warning(self, "Invalid Population Size", "Population size must be at least 3.")
+            return
+
+        if elite_count >= population_size:
+            QMessageBox.warning(self, "Invalid Choose Top", "Choose Top must be smaller than the population size.")
             return
 
         for widget in self._parameter_list_widgets:
