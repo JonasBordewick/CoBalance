@@ -77,13 +77,13 @@ class AutoSuggestionWindow(QWidget):
         self._population_size_spinbox = QSpinBox()
         self._population_size_spinbox.setMinimum(3)
         self._population_size_spinbox.setMaximum(10000)
-        self._population_size_spinbox.setValue(50)
+        self._population_size_spinbox.setValue(15)
         self._population_size_spinbox.setToolTip("Number of candidate solutions in each generation. Must be at least 3.")
 
         self._num_generations_spinbox = QSpinBox()
         self._num_generations_spinbox.setMinimum(1)
         self._num_generations_spinbox.setMaximum(10000)
-        self._num_generations_spinbox.setValue(20)
+        self._num_generations_spinbox.setValue(10)
         self._num_generations_spinbox.setToolTip("Number of generations the algorithm runs. More generations allow deeper optimization but increase total runtime.")
 
         self._iterations_per_individual_spinbox = QSpinBox()
@@ -95,7 +95,7 @@ class AutoSuggestionWindow(QWidget):
         self._elite_count_spinbox = QSpinBox()
         self._elite_count_spinbox.setMinimum(1)
         self._elite_count_spinbox.setMaximum(10000)
-        self._elite_count_spinbox.setValue(4)
+        self._elite_count_spinbox.setValue(1)
         self._elite_count_spinbox.setToolTip("Number of top-performing individuals to keep as output. Each is saved as a separate balance file.")
 
         self._speed_multiplier_spinbox = QDoubleSpinBox()
