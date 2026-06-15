@@ -79,7 +79,7 @@ Der Logger ist als Singleton implementiert und über `GameStatLogger.Instance` e
 
 ---
 
-### `LogGameStats()`
+### LogGameStats()
 
 Schreibt einen Schnappschuss **aller** registrierten `[BalanceLog]`-Felder auf einmal ins Log — mit dem aktuellen `Time.fixedTime` als Zeitstempel.
 
@@ -92,7 +92,7 @@ GameStatLogger.Instance.LogGameStats();
 
 ---
 
-### `LogGameStat(string key, object value)`
+### LogGameStat(string key, object value)
 
 Schreibt einen einzelnen Wert mit dem angegebenen Schlüssel ins Log. Als Zeitstempel wird automatisch `Time.fixedTime` verwendet.
 
@@ -106,7 +106,7 @@ GameStatLogger.Instance.LogGameStat("enemies_defeated", enemyCount);
 
 ---
 
-### `LogGameStat(float t, string key, object value)`
+### LogGameStat(float t, string key, object value)
 
 Wie die obige Methode, aber mit einem **manuell angegebenen Zeitstempel** `t`. Sinnvoll, wenn der Zeitpunkt des Ereignisses bekannt ist und exakt ins Log übernommen werden soll.
 

@@ -65,7 +65,7 @@ chmod +x CoBalance-x86_64.AppImage
 This is the real checkpoint: Unity sees the plugin **and** the tool can open the project file.
 
 1. **In Unity:** confirm that a **CoBalance** entry is present in the menu bar.
-2. Locate the file **`project.cb`** in your project folder under **`<ProjectPath>/CoBalance/`** (it was created automatically when the plugin was installed).
+2. Locate the file **`project.cb`** in your project folder under **`<Unity Project Path>/CoBalance/`** (it was created automatically when the plugin was installed).
 3. **In the Balancing Tool:** open that file via **Project → Open** (`Ctrl+O`).
 
 > ✅ **Setup complete:** The `project.cb` file opens in the Balancing Tool and shows the Parameters view. If you got here, your toolchain is ready — continue with [Getting Started](getting-started.md).

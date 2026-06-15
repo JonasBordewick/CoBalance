@@ -1,6 +1,6 @@
-# Auto Suggestion
+# Auto Parameter Suggestion
 
-Die Auto-Suggestion-Funktion der Desktop App nutzt einen genetischen Algorithmus, um automatisch optimierte Parameterkombinationen zu finden. Dazu führt sie mehrere Simulationsläufe durch und bewertet jede Kombination anhand eines **Fitnesswerts**.
+Die Auto Parameter Suggestion-Funktion der Desktop App nutzt einen genetischen Algorithmus, um automatisch optimierte Parameterkombinationen zu finden. Dazu führt sie mehrere Simulationsläufe durch und bewertet jede Kombination anhand eines **Fitnesswerts**.
 
 Damit CoBalance diesen Fitnesswert abrufen kann, muss das Unity-Projekt eine Komponente bereitstellen, die das Interface `IGeneticAlgorithmFitnessEvaluator` implementiert.
 
