@@ -191,8 +191,7 @@ class JobViewModel(QObject):
 
     def _on_thread_finished(self):
         # _last_error is set by _on_worker_failed (which fires before thread.finished),
-        # so we can safely read it here to decide whether to report an error or
-        # emit the success signal.
+        # so we can safely read it here to decide whether to report an error.
         error = self._last_error
 
         self._worker = None
@@ -202,8 +201,10 @@ class JobViewModel(QObject):
 
         if error:
             self._project_context_view_model.on_error(error)
-        else:
-            self.simulation_finished.emit()
+
+        # Emitted on both success and failure so the UI clears the
+        # "running" status instead of leaving it stuck after an error.
+        self.simulation_finished.emit()
 
 
 

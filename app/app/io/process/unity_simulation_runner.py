@@ -8,6 +8,7 @@ Contact: jonas.bordewick@uni-a.de
 """
 import datetime
 import os.path
+import plistlib
 import subprocess
 import threading
 from typing import Optional
@@ -111,10 +112,39 @@ class UnitySimulationRunner:
                 pass
 
     @staticmethod
+    def _resolve_executable_path(path: str) -> str:
+        """
+        Resolves the path to the actual Unity executable.
+
+        On macOS, the Unity Editor is an application bundle (a directory
+        ending in ".app"), which os.path.isfile() does not recognize and
+        which cannot be executed directly. The real binary lives inside
+        Contents/MacOS, named after the bundle's CFBundleExecutable entry.
+        """
+        if os.path.isfile(path):
+            return path
+
+        if path.endswith(".app") and os.path.isdir(path):
+            executable_name = "Unity"
+            info_plist_path = os.path.join(path, "Contents", "Info.plist")
+            try:
+                with open(info_plist_path, "rb") as info_plist_file:
+                    info_plist = plistlib.load(info_plist_file)
+                executable_name = info_plist.get("CFBundleExecutable", executable_name)
+            except Exception:
+                pass
+
+            bundled_executable_path = os.path.join(path, "Contents", "MacOS", executable_name)
+            if os.path.isfile(bundled_executable_path):
+                return bundled_executable_path
+
+        return path
+
+    @staticmethod
     def _validate_job(job: SimulationJob) -> None:
         if not job.unity_application_path:
             raise ValueError("unity_application_path is required.")
-        if not os.path.isfile(job.unity_application_path):
+        if not os.path.isfile(UnitySimulationRunner._resolve_executable_path(job.unity_application_path)):
             raise FileNotFoundError(f"Unity application not found at {job.unity_application_path}")
 
         if not job.project_path:
@@ -130,7 +160,7 @@ class UnitySimulationRunner:
     @staticmethod
     def _build_command(job: SimulationJob) -> list[str]:
         base = [
-            job.unity_application_path,
+            UnitySimulationRunner._resolve_executable_path(job.unity_application_path),
             "-projectPath", job.project_path,
             "-batchmode",
             "-nographics",
