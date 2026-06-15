@@ -1,6 +1,6 @@
 {
     "name": "dev.bordewick.cobalance",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "displayName": "CoBalance for Unity",
     "description": "Runtime and editor extensions for exposing balance parameters, bootstrapping headless simulations, and reporting fitness scores to the CoBalance desktop application.",
     "unity": "6000.0",

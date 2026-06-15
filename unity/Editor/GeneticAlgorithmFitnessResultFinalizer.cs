@@ -28,6 +28,12 @@ namespace CoBalance.Editor
                 return;
             }
 
+            if (string.IsNullOrWhiteSpace(outputPath))
+            {
+                Debug.LogError("No output path specified for final fitness results.");
+                return;
+            }
+
             var map = new Dictionary<string, List<float>>();
 
             foreach (var line in File.ReadAllLines(inputPath))
