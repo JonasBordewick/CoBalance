@@ -6,6 +6,23 @@ Author: Jonas Bordewick
 Date: 30.01.2026
 Contact: jonas.bordewick@uni-a.de
 """
+import os
+import sys
+
+# Pin matplotlib's cache directory to a persistent location before matplotlib
+# is imported (transitively via app.ui). In the PyInstaller onefile build,
+# sys._MEIPASS is a fresh temp directory on every launch; if matplotlib's
+# default cache resolution ever lands there (or somewhere else non-persistent
+# on macOS), it rebuilds its font list from scratch on every start, which is
+# slow. Pointing MPLCONFIGDIR at a fixed, writable directory makes the font
+# cache persist across runs.
+if "MPLCONFIGDIR" not in os.environ:
+    cache_base = os.environ.get("APPDATA") if sys.platform == "win32" else os.environ.get("HOME")
+    cache_base = cache_base or os.path.expanduser("~")
+    mpl_cache_dir = os.path.join(cache_base, ".BalancingTool", "mpl-cache")
+    os.makedirs(mpl_cache_dir, exist_ok=True)
+    os.environ["MPLCONFIGDIR"] = mpl_cache_dir
+
 from PyQt6 import QtWidgets, QtCore
 from PyQt6.QtCore import pyqtSignal, Qt
 from PyQt6.QtGui import QPalette, QColor
@@ -16,7 +33,6 @@ from app.viewmodels import AppViewModel, BalanceViewModel, LogsGroupViewModel, L
     ProjectContextViewModel
 from app.utilities import resource_path
 
-import sys
 import traceback
 import logging
 
