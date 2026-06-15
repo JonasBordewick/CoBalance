@@ -10,6 +10,7 @@ import datetime
 import os.path
 import plistlib
 import subprocess
+import tempfile
 import threading
 from typing import Optional
 
@@ -39,7 +40,7 @@ class UnitySimulationRunner:
         """
         Launches Unity and blocks until the process exits.
 
-        The entire Popen + communicate() block is held under the lock so that
+        The entire Popen + wait() block is held under the lock so that
         cancel() can safely read and terminate _process from the main thread
         without a race condition. The lock is released again in the finally
         block by setting _process back to None.
@@ -54,17 +55,30 @@ class UnitySimulationRunner:
 
         try:
             with self._lock:
-                self._process = subprocess.Popen(
-                    command,
-                    stdout=subprocess.PIPE,
-                    stderr=subprocess.PIPE,
-                    text=True,
-                    cwd=job.project_path,
-                )
+                # stdout/stderr are captured via real temp files and the process is
+                # awaited with wait() rather than communicate(). On macOS, Unity can
+                # leave a helper/crash-handler process running in the background that
+                # inherits the stdout/stderr pipe file descriptors; communicate() would
+                # then block forever waiting for EOF on those pipes even after the
+                # Unity process itself has exited. wait() only checks the exit status
+                # of the Unity process itself, so it is unaffected by that.
+                with tempfile.TemporaryFile(mode="w+", encoding="utf-8") as stdout_file, \
+                        tempfile.TemporaryFile(mode="w+", encoding="utf-8") as stderr_file:
+                    self._process = subprocess.Popen(
+                        command,
+                        stdout=stdout_file,
+                        stderr=stderr_file,
+                        text=True,
+                        cwd=job.project_path,
+                    )
 
-                # communicate() blocks until the process exits and captures all output.
-                stdout, stderr = self._process.communicate()
-                exit_code = self._process.returncode if self._process.returncode is not None else -1
+                    self._process.wait()
+                    exit_code = self._process.returncode if self._process.returncode is not None else -1
+
+                    stdout_file.seek(0)
+                    stderr_file.seek(0)
+                    stdout = stdout_file.read()
+                    stderr = stderr_file.read()
 
                 finished_at_dt = datetime.datetime.now()
                 finished_at = finished_at_dt.isoformat(timespec="seconds")
