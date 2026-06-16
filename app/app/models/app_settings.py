@@ -14,7 +14,7 @@ from dataclasses import dataclass
 class AppSettings:
     theme: str = 'light'
     last_opened_file: str = ''
-    auto_save: bool = False
+    auto_save: bool = True
     default_number_of_runs: int = 1
     default_time_scale: float = 5.0
     default_max_simulation_time: int = 300

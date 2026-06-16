@@ -65,7 +65,7 @@ class EntityComparisonView(QWidget):
         table.setSortingEnabled(True)
         table.verticalHeader().setVisible(False)
         table.setSelectionBehavior(QTableView.SelectionBehavior.SelectRows)
-        table.setSelectionMode(QTableView.SelectionMode.MultiSelection)
+        table.setSelectionMode(QTableView.SelectionMode.ExtendedSelection)
 
         self.entity_table = table  # Store reference to the table for later use
 

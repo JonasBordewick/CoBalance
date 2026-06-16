@@ -18,6 +18,7 @@ from .radar_chart_widget import RadarChartWidget
 from .log_chart_widget import LogChartWidget
 from .labeled_combo_box import LabeledComboBox
 from .selection_button import SelectionButton
+from .spinner_widget import SpinnerWidget
 
 __all__ = [
     'NavbarIconButton',
@@ -31,5 +32,6 @@ __all__ = [
     'LabeledComboBox',
     'LogChartWidget',
     'SelectionButton',
-    'ParameterSettingsListTile'
+    'ParameterSettingsListTile',
+    'SpinnerWidget',
 ]

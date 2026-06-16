@@ -81,7 +81,7 @@ class ParameterView(QWidget):
         self.table.setSortingEnabled(True)
         self.table.verticalHeader().setVisible(False)
         self.table.setSelectionBehavior(QTableView.SelectionBehavior.SelectRows)
-        self.table.setSelectionMode(QTableView.SelectionMode.MultiSelection)
+        self.table.setSelectionMode(QTableView.SelectionMode.ExtendedSelection)
 
         # Model + Proxy
         self.model = ParameterTableModel(self._balance_vm, [])

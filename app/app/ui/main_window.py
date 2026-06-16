@@ -20,7 +20,7 @@ from app.ui.content_area import ContentArea
 from app.ui.settings_window import SettingsWindow
 from app.ui.simulation_window import SimulationWindow
 from app.ui.utilities import create_group_from_selection_via_dialog
-from app.ui.widgets import NavbarIconButton, HoverTooltip, NavbarIconButtonGroup, SelectionButton
+from app.ui.widgets import NavbarIconButton, HoverTooltip, NavbarIconButtonGroup, SelectionButton, SpinnerWidget
 from app.utilities import resource_path
 from app.viewmodels import AppViewModel, BalanceViewModel, LogsExplorerViewModel, ProjectContextViewModel
 from app.viewmodels.settings_view_model import SettingsViewModel
@@ -190,6 +190,9 @@ class MainWindow(QMainWindow):
         widget.setFixedHeight(30)
         layout = QHBoxLayout(widget)
         layout.setContentsMargins(50, 0, 45, 2)
+
+        self.spinner = SpinnerWidget(size=16)
+        layout.addWidget(self.spinner)
 
         self.status_label = QLabel()
         layout.addWidget(self.status_label)
@@ -473,12 +476,15 @@ class MainWindow(QMainWindow):
         )
 
     def _on_simulation_started(self):
+        self.spinner.start()
         self.status_label.setText("Simulation running...")
 
     def _on_auto_suggestion_started(self):
+        self.spinner.start()
         self.status_label.setText("Auto Suggestion running...")
 
     def _on_job_finished(self):
+        self.spinner.stop()
         self.status_label.setText("")
 
     def _on_auto_suggestion_progress(self, current_generation: int, total_generations: int):
