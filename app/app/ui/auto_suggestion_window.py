@@ -99,10 +99,10 @@ class AutoSuggestionWindow(QWidget):
         self._elite_count_spinbox.setToolTip("Number of top-performing individuals to keep as output. Each is saved as a separate balance file.")
 
         self._speed_multiplier_spinbox = QDoubleSpinBox()
-        self._speed_multiplier_spinbox.setRange(1.0, 20.0)
+        self._speed_multiplier_spinbox.setRange(1.0, 100.0)
         self._speed_multiplier_spinbox.setSingleStep(0.5)
         self._speed_multiplier_spinbox.setValue(1.0)
-        self._speed_multiplier_spinbox.setToolTip("Speed multiplier for the simulation for each individual. (From 1 to 20)")
+        self._speed_multiplier_spinbox.setToolTip("Speed multiplier for the simulation for each individual. (From 1 to 100)")
 
         self._max_simulation_time_spinbox = QSpinBox()
         self._max_simulation_time_spinbox.setRange(1, 10000)

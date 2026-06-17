@@ -69,10 +69,10 @@ class SimulationWindow(QWidget):
         self.number_of_runs_spinbox.setToolTip("How many times the simulation runs with the selected balance. Multiple runs average out random variation in the results.")
 
         self.speed_multiplier_spinbox = QDoubleSpinBox()
-        self.speed_multiplier_spinbox.setRange(1.0, 20.0)
+        self.speed_multiplier_spinbox.setRange(1.0, 100.0)
         self.speed_multiplier_spinbox.setSingleStep(0.5)
         self.speed_multiplier_spinbox.setValue(1.0)
-        self.speed_multiplier_spinbox.setToolTip("Speed multiplier for the simulation. (From 1 to 20)")
+        self.speed_multiplier_spinbox.setToolTip("Speed multiplier for the simulation. (From 1 to 100)")
 
         self.max_simulation_time_spinbox = QSpinBox()
         self.max_simulation_time_spinbox.setRange(1, 10000)

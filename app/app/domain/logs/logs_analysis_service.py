@@ -212,6 +212,8 @@ class LogsAnalysisService:
     # -----------------------------------------------------------------------------------------------
 
     def _get_aggregated_data_for_series(self, series: list[pd.DataFrame], options: AnalysisOptions) -> pd.DataFrame:
+        if options.aggregation == Aggregation.NONE:
+            return self._none_series(series)
         if options.aggregation == Aggregation.MEAN:
             return self._mean_series(series)
         if options.aggregation == Aggregation.MEDIAN:
@@ -223,6 +225,15 @@ class LogsAnalysisService:
         if options.aggregation == Aggregation.SUM:
             return self._sum_series(series)
         raise ValueError(f"Unknown group aggregation: {options.aggregation}")
+
+    @staticmethod
+    def _none_series(series: list[pd.DataFrame]) -> pd.DataFrame:
+        if not series:
+            return pd.DataFrame(columns=["t", "v"])
+        frames = [df[["t", "v"]] for df in series if df is not None and not df.empty]
+        if not frames:
+            return pd.DataFrame(columns=["t", "v"])
+        return pd.concat(frames, ignore_index=True).sort_values("t").reset_index(drop=True)
 
     def _mean_series(self, series: list[pd.DataFrame]) -> pd.DataFrame:
         merged = self._merge_series_on_time(series)

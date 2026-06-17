@@ -67,7 +67,7 @@ class LogsExplorerViewModel(QObject):
         self._selected_value_mode: str = "raw"
         self._selected_chart_type: str = "line"
         self._selected_compare_mode: str = "individual"
-        self._selected_group_aggregation: str = "mean"
+        self._selected_group_aggregation: str = "none"
 
         self._watcher.watched_directory_changed.connect(self._on_watcher_directory_changed)
         self._project_context_view_model.project_changed.connect(

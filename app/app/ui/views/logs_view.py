@@ -160,6 +160,7 @@ class LogsView(QWidget):
             "Group Aggregation Mode",
             panel,
             items=[
+                ("None", "none"),
                 ("Mean", "mean"),
                 ("Median", "median"),
                 ("Min", "min"),

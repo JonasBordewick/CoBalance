@@ -22,6 +22,7 @@ class CompareMode(Enum):
     GROUP = "grouped"
 
 class Aggregation(Enum):
+    NONE = "none"
     MEAN = "mean"
     MEDIAN = "median"
     MIN = "min"
