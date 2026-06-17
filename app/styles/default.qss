@@ -29,10 +29,16 @@
     background-color: rgba(179, 179, 179, 0.50);
 }
 
+.selectionButtonLabel {
+    background-color: transparent;
+    padding: 2px 0px;
+}
+
 .selectionButton {
     background-color: transparent;
     border: none;
     border-radius: 8px;
+    padding: 2px 4px;
 }
 
 QToolButton::menu-indicator {

@@ -1,19 +1,32 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from PyQt6.QtCore import pyqtSignal, QPoint
+from PyQt6.QtCore import pyqtSignal
 from PyQt6.QtGui import QActionGroup, QAction
-from PyQt6.QtWidgets import QToolButton, QMenu
+from PyQt6.QtWidgets import QToolButton, QMenu, QWidget, QHBoxLayout, QLabel, QSizePolicy
 
 
-class SelectionButton(QToolButton):
+class SelectionButton(QWidget):
 
     selection_changed = pyqtSignal(str)
 
     def __init__(self, selection_options=None, selected_option=None, parent=None):
         super().__init__(parent)
 
-        self.setProperty("class", "selectionButton")
+        self.setSizePolicy(QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Preferred)
+
+        layout = QHBoxLayout(self)
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(0)
+
+        self._label = QLabel("Selected Balance Snapshot: ")
+        self._label.setProperty("class", "selectionButtonLabel")
+        layout.addWidget(self._label)
+
+        self._btn = QToolButton()
+        self._btn.setProperty("class", "selectionButton")
+        self._btn.setPopupMode(QToolButton.ToolButtonPopupMode.InstantPopup)
+        layout.addWidget(self._btn)
 
         self._selection_options = selection_options or []
 
@@ -22,10 +35,8 @@ class SelectionButton(QToolButton):
 
         self._selected_option = selected_option
 
-        self.setPopupMode(QToolButton.ToolButtonPopupMode.InstantPopup)
-
         if self._selected_option:
-            self.setText(f"Selected Balance: {self._selected_option}")
+            self._btn.setText(self._selected_option)
 
         self._rebuild_menu()
 
@@ -38,7 +49,7 @@ class SelectionButton(QToolButton):
             return
 
         self._selected_option = option
-        self.setText(f"Selected Balance: {option}")
+        self._btn.setText(option)
         self._rebuild_menu()
         self.selection_changed.emit(option)
 
@@ -46,11 +57,11 @@ class SelectionButton(QToolButton):
         self._selection_options = options
         if selected_option and selected_option in options:
             self._selected_option = selected_option
-            self.setText(f"Selected Balance: {selected_option}")
+            self._btn.setText(selected_option)
             self.setVisible(True)
         else:
             self._selected_option = None
-            self.setText("")
+            self._btn.setText("")
             self.setVisible(False)
         self._rebuild_menu()
 
@@ -69,4 +80,4 @@ class SelectionButton(QToolButton):
             menu.addAction(action)
             action_group.addAction(action)
 
-        self.setMenu(menu)
+        self._btn.setMenu(menu)
